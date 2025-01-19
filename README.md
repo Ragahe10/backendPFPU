@@ -1,5 +1,7 @@
 # backendPFPU
 Creacion de la api inicial con: 
     dotnet new webapi --use-controllers
-incluimos la interfaz de swaggers con:
+Incluimos la interfaz de swaggers con:
     dotnet add package Swashbuckle.AspNetCore
+Instalo el paquete para manejar la base de datos:
+    dotnet add package Microsoft.Data.Sqlite --version 9.0.0
