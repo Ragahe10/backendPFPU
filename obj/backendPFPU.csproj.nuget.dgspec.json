@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\educacion\\OneDrive\\Escritorio\\ramiro\\ProyectoPU\\backendPFPU\\backendPFPU.csproj": {}
+    "c:\\Users\\educacion\\OneDrive\\Escritorio\\ramiro\\ProyectoPU\\backendPFPU\\backendPFPU.csproj": {}
   },
   "projects": {
-    "C:\\Users\\educacion\\OneDrive\\Escritorio\\ramiro\\ProyectoPU\\backendPFPU\\backendPFPU.csproj": {
+    "c:\\Users\\educacion\\OneDrive\\Escritorio\\ramiro\\ProyectoPU\\backendPFPU\\backendPFPU.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\educacion\\OneDrive\\Escritorio\\ramiro\\ProyectoPU\\backendPFPU\\backendPFPU.csproj",
+        "projectUniqueName": "c:\\Users\\educacion\\OneDrive\\Escritorio\\ramiro\\ProyectoPU\\backendPFPU\\backendPFPU.csproj",
         "projectName": "backendPFPU",
-        "projectPath": "C:\\Users\\educacion\\OneDrive\\Escritorio\\ramiro\\ProyectoPU\\backendPFPU\\backendPFPU.csproj",
+        "projectPath": "c:\\Users\\educacion\\OneDrive\\Escritorio\\ramiro\\ProyectoPU\\backendPFPU\\backendPFPU.csproj",
         "packagesPath": "C:\\Users\\educacion\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\educacion\\OneDrive\\Escritorio\\ramiro\\ProyectoPU\\backendPFPU\\obj\\",
+        "outputPath": "c:\\Users\\educacion\\OneDrive\\Escritorio\\ramiro\\ProyectoPU\\backendPFPU\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\educacion\\AppData\\Roaming\\NuGet\\NuGet.Config"

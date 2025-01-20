@@ -1,12 +1,13 @@
 namespace backendPFPU.Models;
 
 public class Usuario{
-    private int id_usuario;
-    private int dni;
-    private string contrasenia;
-    private string correo;
-    private string nombre;
-    private string apellido;
+    protected int id_usuario;
+    protected int dni;
+    protected string contrasenia;
+    protected string correo;
+    protected string nombre;
+    protected string apellido;
+    protected string tipo;
 
     public int Id_usuario { get => id_usuario; set => id_usuario = value; }
     public int Dni { get => dni; set => dni = value; }
@@ -14,4 +15,5 @@ public class Usuario{
     public string Correo { get => correo; set => correo = value; }
     public string Nombre { get => nombre; set => nombre = value; }
     public string Apellido { get => apellido; set => apellido = value; }
+    public string Tipo { get => tipo; set => tipo = value; }
 }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "2aXvk/ZY6RU=",
+  "dgSpecHash": "Oe9ZulRThaE=",
   "success": true,
-  "projectFilePath": "C:\\Users\\educacion\\OneDrive\\Escritorio\\ramiro\\ProyectoPU\\backendPFPU\\backendPFPU.csproj",
+  "projectFilePath": "c:\\Users\\educacion\\OneDrive\\Escritorio\\ramiro\\ProyectoPU\\backendPFPU\\backendPFPU.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\educacion\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.0\\microsoft.aspnetcore.openapi.9.0.0.nupkg.sha512",
     "C:\\Users\\educacion\\.nuget\\packages\\microsoft.data.sqlite\\9.0.0\\microsoft.data.sqlite.9.0.0.nupkg.sha512",

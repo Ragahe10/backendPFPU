@@ -18,20 +18,21 @@ public class UsuarioController : ControllerBase
         _usuarioRepository = usuarioRepository;
     }
 
-    [HttpPost(Name = "PostUsuario")]
-    public IActionResult PostUsuario([FromBody] Usuario usuario)
+    [HttpPost]
+    [Route("/PostProfesor")]
+    public IActionResult PostProfesor(Profesor usuario)
     {
         if (usuario == null)
         {
-            return BadRequest(new { msg = "El usuario proporcionado es inválido." });
+            return BadRequest(new { msg = "El Profesor proporcionado es inválido." });
         }
 
         // Guardar el usuario utilizando el repositorio
-        _usuarioRepository.PostUsuario(usuario);
+        _usuarioRepository.PostProfesor(usuario);
 
         return Ok(new
         {
-            msg = "El usuario se guardó con éxito",
+            msg = "El Profesor se guardó con éxito",
             usuario
         });
     }
