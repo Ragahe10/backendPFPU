@@ -1,15 +1,19 @@
 using backendPFPU.Models;
 using Microsoft.Data.Sqlite;
+using BCrypt.Net;
+using backendPFPU.Helpers;
 
 namespace backendPFPU.Respositories;
 
 public class UsuarioRepository : IUsuarioRepository
 {
     private string _CadenaDeConexion;
+    private PasswordService _service;
 
     public UsuarioRepository(string cadenaDeConexion)
     {
         _CadenaDeConexion = cadenaDeConexion;
+        _service = new PasswordService();
     }
 
     public void PostAdministrador(Administrador usuario)
@@ -19,7 +23,7 @@ public class UsuarioRepository : IUsuarioRepository
         {
             var command = new SqliteCommand(query, connection);
             command.Parameters.Add(new SqliteParameter("@dni", usuario.Dni.ToString()));
-            command.Parameters.Add(new SqliteParameter("@contrasenia", usuario.Contrasenia));
+            command.Parameters.Add(new SqliteParameter("@contrasenia", _service.Encriptar(usuario.Contrasenia)));
             command.Parameters.Add(new SqliteParameter("@correo", usuario.Correo));
             command.Parameters.Add(new SqliteParameter("@nombre", usuario.Nombre));
             command.Parameters.Add(new SqliteParameter("@apellido", usuario.Apellido));
@@ -47,7 +51,7 @@ public class UsuarioRepository : IUsuarioRepository
                     // Insertar en la tabla usuario y obtener el ID generado
                     var usuarioCommand = new SqliteCommand(usuarioQuery, connection, transaction);
                     usuarioCommand.Parameters.AddWithValue("@dni", usuario.Dni.ToString());
-                    usuarioCommand.Parameters.AddWithValue("@contrasenia", usuario.Contrasenia);
+                    usuarioCommand.Parameters.AddWithValue("@contrasenia", _service.Encriptar(usuario.Contrasenia));
                     usuarioCommand.Parameters.AddWithValue("@correo", usuario.Correo);
                     usuarioCommand.Parameters.AddWithValue("@nombre", usuario.Nombre);
                     usuarioCommand.Parameters.AddWithValue("@apellido", usuario.Apellido);

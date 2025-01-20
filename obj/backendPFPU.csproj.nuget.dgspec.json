@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\educacion\\OneDrive\\Escritorio\\ramiro\\ProyectoPU\\backendPFPU\\backendPFPU.csproj": {}
+    "C:\\Users\\educacion\\OneDrive\\Escritorio\\ramiro\\ProyectoPU\\backendPFPU\\backendPFPU.csproj": {}
   },
   "projects": {
-    "c:\\Users\\educacion\\OneDrive\\Escritorio\\ramiro\\ProyectoPU\\backendPFPU\\backendPFPU.csproj": {
+    "C:\\Users\\educacion\\OneDrive\\Escritorio\\ramiro\\ProyectoPU\\backendPFPU\\backendPFPU.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\educacion\\OneDrive\\Escritorio\\ramiro\\ProyectoPU\\backendPFPU\\backendPFPU.csproj",
+        "projectUniqueName": "C:\\Users\\educacion\\OneDrive\\Escritorio\\ramiro\\ProyectoPU\\backendPFPU\\backendPFPU.csproj",
         "projectName": "backendPFPU",
-        "projectPath": "c:\\Users\\educacion\\OneDrive\\Escritorio\\ramiro\\ProyectoPU\\backendPFPU\\backendPFPU.csproj",
+        "projectPath": "C:\\Users\\educacion\\OneDrive\\Escritorio\\ramiro\\ProyectoPU\\backendPFPU\\backendPFPU.csproj",
         "packagesPath": "C:\\Users\\educacion\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\educacion\\OneDrive\\Escritorio\\ramiro\\ProyectoPU\\backendPFPU\\obj\\",
+        "outputPath": "C:\\Users\\educacion\\OneDrive\\Escritorio\\ramiro\\ProyectoPU\\backendPFPU\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\educacion\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -44,6 +44,10 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "dependencies": {
+            "BCrypt.Net-Next": {
+              "target": "Package",
+              "version": "[4.0.3, )"
+            },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",
               "version": "[9.0.0, )"

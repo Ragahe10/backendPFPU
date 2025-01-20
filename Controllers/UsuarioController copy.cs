@@ -33,7 +33,6 @@ public class UsuarioController : ControllerBase
         return Ok(new
         {
             msg = "El Profesor se guardó con éxito",
-            usuario
         });
     }
 }
