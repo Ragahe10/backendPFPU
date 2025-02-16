@@ -1,7 +1,7 @@
 namespace backendPFPU.Models;
 
 public class Administrador : Usuario {
-    private string rango;
+    public string Rango { get; set; }
 
     public Administrador()
     {
@@ -16,6 +16,6 @@ public class Administrador : Usuario {
         this.nombre = usuario.Nombre;
         this.apellido = usuario.Apellido;
         this.tipo = usuario.Tipo;
-        this.rango = rango;
+        this.Rango = rango;
     }
 }
