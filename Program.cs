@@ -1,21 +1,53 @@
 using backendPFPU.Respositories;
+using backendPFPU.Helpers;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-
+// Agregar servicios al contenedor
 builder.Services.AddControllers();
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
+// Aprende más sobre cómo configurar OpenAPI en https://aka.ms/aspnet/openapi
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-// Inyeccion de dependencia para la cadena de conexion de la base de datos
+
+// Configuración de la cadena de conexión para la base de datos
 var CadenaDeConexion = builder.Configuration.GetConnectionString("SqliteConexion")!.ToString();
 builder.Services.AddSingleton<string>(CadenaDeConexion);
 
-builder.Services.AddScoped<IUsuarioRepository,UsuarioRepository>();
+// Inyección de dependencias para el repositorio de usuarios
+builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+builder.Services.AddScoped<JwtService>(); // Registrar JwtService
 
+// Configuración de JWT (Agregado)
+var jwtSettings = builder.Configuration.GetSection("Jwt");
+var key = Encoding.UTF8.GetBytes(jwtSettings["Key"]);
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(options =>
+{
+    options.RequireHttpsMetadata = false; // Desactivado solo para desarrollo, habilítalo para producción
+    options.SaveToken = true;
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(key),
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidIssuer = jwtSettings["Issuer"],
+        ValidAudience = jwtSettings["Audience"],
+        ValidateLifetime = true // Verificar que el token no esté expirado
+    };
+});
+
+// Crear la aplicación
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
+// Configuración del pipeline de solicitudes HTTP
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -24,7 +56,9 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseAuthorization();
+// Habilitar autenticación y autorización (Agregado)
+app.UseAuthentication();  // Agregar autenticación
+app.UseAuthorization();   // Agregar autorización
 
 app.MapControllers();
 
