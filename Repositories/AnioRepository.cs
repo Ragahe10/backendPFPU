@@ -8,7 +8,6 @@ namespace backendPFPU.Repositories
     public class AnioRepository : IAnioRepository
     {
         private string _CadenaDeConexion;
-        private PasswordService _service;
 
         public AnioRepository(string cadenaDeConexion)
         {

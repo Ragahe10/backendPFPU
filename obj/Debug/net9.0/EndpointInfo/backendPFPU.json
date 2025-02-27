@@ -156,6 +156,126 @@
         }
       }
     },
+    "/GetAllCursos": {
+      "get": {
+        "tags": [
+          "Curso"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/GetCurso/{id}": {
+      "get": {
+        "tags": [
+          "Curso"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/PostCurso": {
+      "post": {
+        "tags": [
+          "Curso"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Curso"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Curso"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Curso"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/PutCurso": {
+      "put": {
+        "tags": [
+          "Curso"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Curso"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Curso"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Curso"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/DeleteCurso/{id}": {
+      "delete": {
+        "tags": [
+          "Curso"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/PostProfesor": {
       "post": {
         "tags": [
@@ -402,6 +522,10 @@
           "fecha_nac": {
             "type": "string",
             "format": "date-time"
+          },
+          "id_curso": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false
@@ -416,6 +540,28 @@
           "anio": {
             "type": "string",
             "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Curso": {
+        "type": "object",
+        "properties": {
+          "id_curso": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "division": {
+            "type": "string",
+            "nullable": true
+          },
+          "cupo_restante": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "id_anio": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false

@@ -26,4 +26,5 @@ public class Alumno : Usuario {
     public string Direccion { get => direccion; set => direccion = value; }
     public int Matricula { get => matricula; set => matricula = value; }
     public DateTime Fecha_nac { get => fecha_nac; set => fecha_nac = value; }
+    public int Id_curso { get; set; }
 }

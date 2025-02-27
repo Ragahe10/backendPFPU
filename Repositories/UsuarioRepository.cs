@@ -140,8 +140,8 @@ public class UsuarioRepository : IUsuarioRepository
 
     var lastIdQuery = "SELECT last_insert_rowid();";
 
-    var alumnoQuery = @"INSERT INTO alumno (id_alumno, direccion, matricula, fecha_nac) 
-                        VALUES (@id_alumno, @direccion, @matricula, @fecha_nac)";
+    var alumnoQuery = @"INSERT INTO alumno (id_alumno, direccion, matricula, fecha_nac, id_curso) 
+                        VALUES (@id_alumno, @direccion, @matricula, @fecha_nac, @id_curso)";
 
         using (var connection = new SqliteConnection(_CadenaDeConexion))
         {
@@ -175,6 +175,7 @@ public class UsuarioRepository : IUsuarioRepository
                         alumnoCommand.Parameters.AddWithValue("@direccion", usuario.Direccion);
                         alumnoCommand.Parameters.AddWithValue("@matricula", usuario.Matricula);
                         alumnoCommand.Parameters.AddWithValue("@fecha_nac", usuario.Fecha_nac);
+                        alumnoCommand.Parameters.AddWithValue("@id_curso", usuario.Id_curso);
                         alumnoCommand.ExecuteNonQuery();
                     }
                     transaction.Commit();

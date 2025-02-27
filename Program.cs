@@ -20,6 +20,7 @@ builder.Services.AddSingleton<string>(CadenaDeConexion);
 // Inyección de dependencias para el repositorio de usuarios
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 builder.Services.AddScoped<IAnioRepository, AnioRepository>();
+builder.Services.AddScoped<ICursoRepository, CursoRepository>();
 builder.Services.AddScoped<JwtService>(); // Registrar JwtService
 builder.Services.AddSingleton<PasswordService>(); // Registrar PasswordService
 
