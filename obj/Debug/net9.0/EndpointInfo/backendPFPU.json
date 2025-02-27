@@ -5,6 +5,157 @@
     "version": "1.0"
   },
   "paths": {
+    "/GetAllAnios": {
+      "get": {
+        "tags": [
+          "Anio"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/GetAnio/{id}": {
+      "get": {
+        "tags": [
+          "Anio"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/PostAnio": {
+      "post": {
+        "tags": [
+          "Anio"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Anio"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Anio"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Anio"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/PutAnio": {
+      "put": {
+        "tags": [
+          "Anio"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Anio"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Anio"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Anio"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/DeleteAnio/{id}": {
+      "delete": {
+        "tags": [
+          "Anio"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/auth/login": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoginRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/PostProfesor": {
       "post": {
         "tags": [
@@ -190,7 +341,11 @@
             "type": "string",
             "nullable": true
           },
-          "rango": {
+          "activo": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "telefono": {
             "type": "string",
             "nullable": true
           }
@@ -228,6 +383,14 @@
             "type": "string",
             "nullable": true
           },
+          "activo": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "telefono": {
+            "type": "string",
+            "nullable": true
+          },
           "direccion": {
             "type": "string",
             "nullable": true
@@ -239,6 +402,34 @@
           "fecha_nac": {
             "type": "string",
             "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Anio": {
+        "type": "object",
+        "properties": {
+          "id_anio": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "anio": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "LoginRequest": {
+        "type": "object",
+        "properties": {
+          "dni": {
+            "type": "string",
+            "nullable": true
+          },
+          "password": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -271,6 +462,14 @@
             "nullable": true
           },
           "tipo": {
+            "type": "string",
+            "nullable": true
+          },
+          "activo": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "telefono": {
             "type": "string",
             "nullable": true
           }

@@ -8,6 +8,8 @@ public class Usuario{
     protected string nombre;
     protected string apellido;
     protected string tipo;
+    protected int activo;
+    protected string telefono;
 
     public int Id_usuario { get => id_usuario; set => id_usuario = value; }
     public int Dni { get => dni; set => dni = value; }
@@ -16,4 +18,6 @@ public class Usuario{
     public string Nombre { get => nombre; set => nombre = value; }
     public string Apellido { get => apellido; set => apellido = value; }
     public string Tipo { get => tipo; set => tipo = value; }
+    public int Activo { get => activo; set => activo = value; }
+    public string Telefono { get => telefono; set => telefono = value; }
 }

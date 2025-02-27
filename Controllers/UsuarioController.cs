@@ -36,6 +36,7 @@ public class UsuarioController : ControllerBase
         });
     }
 
+
     [HttpPost]
     [Route("/PostAdministrador")]
     public IActionResult PostAdministrador(Administrador usuario)
@@ -115,4 +116,5 @@ public class UsuarioController : ControllerBase
         }
         return Ok(usuario);
     }
+
 }

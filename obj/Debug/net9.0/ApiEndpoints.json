@@ -1,8 +1,50 @@
 [
   {
+    "ContainingType": "AuthController",
+    "Method": "Login",
+    "RelativePath": "api/auth/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "AuthController\u002BLoginRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "backendPFPU.Controllers.AnioController",
+    "Method": "DeleteAnio",
+    "RelativePath": "DeleteAnio/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "backendPFPU.Controllers.UsuarioController",
     "Method": "GetAdministradores",
     "RelativePath": "GetAdministradores",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "backendPFPU.Controllers.AnioController",
+    "Method": "GetAllAnios",
+    "RelativePath": "GetAllAnios",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -17,6 +59,22 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "backendPFPU.Controllers.AnioController",
+    "Method": "GetAnio",
+    "RelativePath": "GetAnio/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {
@@ -78,6 +136,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "backendPFPU.Controllers.AnioController",
+    "Method": "PostAnio",
+    "RelativePath": "PostAnio",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "anio",
+        "Type": "backendPFPU.Models.Anio",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "backendPFPU.Controllers.UsuarioController",
     "Method": "PostProfesor",
     "RelativePath": "PostProfesor",
@@ -88,6 +162,22 @@
       {
         "Name": "usuario",
         "Type": "backendPFPU.Models.Profesor",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "backendPFPU.Controllers.AnioController",
+    "Method": "PutAnio",
+    "RelativePath": "PutAnio",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "anio",
+        "Type": "backendPFPU.Models.Anio",
         "IsRequired": true
       }
     ],

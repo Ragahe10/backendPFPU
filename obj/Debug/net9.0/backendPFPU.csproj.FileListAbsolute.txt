@@ -127,3 +127,11 @@ C:\Users\boni\Source\Repos\backendPFPU\obj\Debug\net9.0\refint\backendPFPU.dll
 C:\Users\boni\Source\Repos\backendPFPU\obj\Debug\net9.0\backendPFPU.pdb
 C:\Users\boni\Source\Repos\backendPFPU\obj\Debug\net9.0\backendPFPU.genruntimeconfig.cache
 C:\Users\boni\Source\Repos\backendPFPU\obj\Debug\net9.0\ref\backendPFPU.dll
+C:\Users\boni\Source\Repos\backendPFPU\bin\Debug\net9.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\boni\Source\Repos\backendPFPU\bin\Debug\net9.0\Microsoft.IdentityModel.Abstractions.dll
+C:\Users\boni\Source\Repos\backendPFPU\bin\Debug\net9.0\Microsoft.IdentityModel.JsonWebTokens.dll
+C:\Users\boni\Source\Repos\backendPFPU\bin\Debug\net9.0\Microsoft.IdentityModel.Logging.dll
+C:\Users\boni\Source\Repos\backendPFPU\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.dll
+C:\Users\boni\Source\Repos\backendPFPU\bin\Debug\net9.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+C:\Users\boni\Source\Repos\backendPFPU\bin\Debug\net9.0\Microsoft.IdentityModel.Tokens.dll
+C:\Users\boni\Source\Repos\backendPFPU\bin\Debug\net9.0\System.IdentityModel.Tokens.Jwt.dll

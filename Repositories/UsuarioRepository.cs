@@ -18,12 +18,12 @@ public class UsuarioRepository : IUsuarioRepository
 
     public void PostAdministrador(Administrador usuario)
     {
-        var usuarioQuery = @"INSERT INTO usuario (dni, contrasenia, correo, nombre, apellido, tipo) 
-                         VALUES (@dni, @contrasenia, @correo, @nombre, @apellido, @tipo)";
+        var usuarioQuery = @"INSERT INTO usuario (dni, contrasenia, correo, nombre, apellido, tipo, telefono) 
+                         VALUES (@dni, @contrasenia, @correo, @nombre, @apellido, @tipo, @telefono)";
 
         var lastIdQuery = "SELECT last_insert_rowid();";
 
-        var administradorQuery = @"INSERT INTO administrativo (id_admin, rango) VALUES (@id_admin, @rango)";
+        var administradorQuery = @"INSERT INTO administrativo (id_admin) VALUES (@id_admin)";
 
         using (var connection = new SqliteConnection(_CadenaDeConexion))
         {
@@ -43,6 +43,7 @@ public class UsuarioRepository : IUsuarioRepository
                         usuarioCommand.Parameters.AddWithValue("@nombre", usuario.Nombre);
                         usuarioCommand.Parameters.AddWithValue("@apellido", usuario.Apellido);
                         usuarioCommand.Parameters.AddWithValue("@tipo", usuario.Tipo);
+                        usuarioCommand.Parameters.AddWithValue("@telefono", usuario.Telefono);
                         usuarioCommand.ExecuteNonQuery();
                     }
 
@@ -56,7 +57,6 @@ public class UsuarioRepository : IUsuarioRepository
                     using (var administradorCommand = new SqliteCommand(administradorQuery, connection, transaction))
                     {
                         administradorCommand.Parameters.AddWithValue("@id_admin", id_administrador);
-                        administradorCommand.Parameters.AddWithValue("@rango", usuario.Rango);
                         administradorCommand.ExecuteNonQuery();
                     }
 
@@ -75,8 +75,8 @@ public class UsuarioRepository : IUsuarioRepository
 
     public void PostProfesor(Profesor usuario)
     {
-        var insertUsuarioQuery = @"INSERT INTO usuario (dni, contrasenia, correo, nombre, apellido, tipo) 
-                           VALUES (@dni, @contrasenia, @correo, @nombre, @apellido, @tipo);";
+        var insertUsuarioQuery = @"INSERT INTO usuario (dni, contrasenia, correo, nombre, apellido, tipo, telefono) 
+                           VALUES (@dni, @contrasenia, @correo, @nombre, @apellido, @tipo, @telefono);";
 
         var lastIdQuery = "SELECT last_insert_rowid();";
 
@@ -99,6 +99,7 @@ public class UsuarioRepository : IUsuarioRepository
                         insertCommand.Parameters.AddWithValue("@nombre", usuario.Nombre);
                         insertCommand.Parameters.AddWithValue("@apellido", usuario.Apellido);
                         insertCommand.Parameters.AddWithValue("@tipo", usuario.Tipo);
+                        insertCommand.Parameters.AddWithValue("@telefono", usuario.Telefono);
 
                         insertCommand.ExecuteNonQuery();
                     }
@@ -134,8 +135,8 @@ public class UsuarioRepository : IUsuarioRepository
 
 
     public void PostAlumno(Alumno usuario) { 
-    var usuarioQuery = @"INSERT INTO usuario (dni, contrasenia, correo, nombre, apellido, tipo) 
-                         VALUES (@dni, @contrasenia, @correo, @nombre, @apellido, @tipo)";
+    var usuarioQuery = @"INSERT INTO usuario (dni, contrasenia, correo, nombre, apellido, tipo, telefono) 
+                         VALUES (@dni, @contrasenia, @correo, @nombre, @apellido, @tipo, @telefono)";
 
     var lastIdQuery = "SELECT last_insert_rowid();";
 
@@ -159,6 +160,7 @@ public class UsuarioRepository : IUsuarioRepository
                         usuarioCommand.Parameters.AddWithValue("@nombre", usuario.Nombre);
                         usuarioCommand.Parameters.AddWithValue("@apellido", usuario.Apellido);
                         usuarioCommand.Parameters.AddWithValue("@tipo", usuario.Tipo);
+                        usuarioCommand.Parameters.AddWithValue("@telefono", usuario.Telefono);
                         usuarioCommand.ExecuteNonQuery();
                     }
                     // Obtener el último ID insertado
