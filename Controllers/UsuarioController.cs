@@ -117,4 +117,35 @@ public class UsuarioController : ControllerBase
         return Ok(usuario);
     }
 
+    [HttpPut]
+    [Route("/UpdateAlumno")]
+    public IActionResult UpdateUsuario(Alumno usuario)
+    {
+        if (usuario.Id_usuario == 0)
+        {
+            return BadRequest(new { msg = "El usuario proporcionado es inválido." });
+        }
+        _usuarioRepository.UpdateUsuario(usuario);
+        return Ok(new
+        {
+            msg = "El usuario se actualizó con éxito",
+        });
+    }
+
+    [HttpDelete]
+    [Route("/DeleteAlumno")]
+    public IActionResult DeleteUsuario(int id_usuario)
+    {
+        var usuario = _usuarioRepository.GetUsuario(id_usuario);
+        if (usuario.Id_usuario == 0)
+        {
+            return BadRequest(new { msg = "El id proporcionado es inválido." });
+        }
+        _usuarioRepository.DeleteAlumno(id_usuario);
+        return Ok(new
+        {
+            msg = "El alumno se eliminó con éxito",
+        });
+    }
+
 }
