@@ -276,7 +276,125 @@
         }
       }
     },
-    "/PostProfesor": {
+    "/AddMateria": {
+      "post": {
+        "tags": [
+          "Materia"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Materia"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Materia"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Materia"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/DeleteMateria": {
+      "delete": {
+        "tags": [
+          "Materia"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/GetMateria": {
+      "get": {
+        "tags": [
+          "Materia"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/GetMaterias": {
+      "get": {
+        "tags": [
+          "Materia"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/UpdateMateria": {
+      "put": {
+        "tags": [
+          "Materia"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Materia"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Materia"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Materia"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/PostDocente": {
       "post": {
         "tags": [
           "Usuario"
@@ -285,17 +403,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Profesor"
+                "$ref": "#/components/schemas/Docente"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Profesor"
+                "$ref": "#/components/schemas/Docente"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Profesor"
+                "$ref": "#/components/schemas/Docente"
               }
             }
           }
@@ -369,10 +487,32 @@
         }
       }
     },
-    "/GetProfesores": {
+    "/GetDocentes": {
       "get": {
         "tags": [
           "Usuario"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/GetDocente": {
+      "get": {
+        "tags": [
+          "Usuario"
+        ],
+        "parameters": [
+          {
+            "name": "id_usuario",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
         ],
         "responses": {
           "200": {
@@ -619,21 +759,7 @@
         },
         "additionalProperties": false
       },
-      "LoginRequest": {
-        "type": "object",
-        "properties": {
-          "dni": {
-            "type": "string",
-            "nullable": true
-          },
-          "password": {
-            "type": "string",
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
-      "Profesor": {
+      "Docente": {
         "type": "object",
         "properties": {
           "id_usuario": {
@@ -670,6 +796,43 @@
           },
           "telefono": {
             "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "LoginRequest": {
+        "type": "object",
+        "properties": {
+          "dni": {
+            "type": "string",
+            "nullable": true
+          },
+          "password": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Materia": {
+        "type": "object",
+        "properties": {
+          "id_materia": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "materia": {
+            "type": "string",
+            "nullable": true
+          },
+          "id_anio": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "id_docente": {
+            "type": "integer",
+            "format": "int32",
             "nullable": true
           }
         },

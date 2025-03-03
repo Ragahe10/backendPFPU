@@ -19,8 +19,8 @@ public class UsuarioController : ControllerBase
     }
 
     [HttpPost]
-    [Route("/PostProfesor")]
-    public IActionResult PostProfesor(Profesor usuario)
+    [Route("/PostDocente")]
+    public IActionResult PostDocente(Docente usuario)
     {
         if (usuario == null)
         {
@@ -28,7 +28,7 @@ public class UsuarioController : ControllerBase
         }
 
         // Guardar el usuario utilizando el repositorio
-        _usuarioRepository.PostProfesor(usuario);
+        _usuarioRepository.PostDocente(usuario);
 
         return Ok(new
         {
@@ -70,15 +70,27 @@ public class UsuarioController : ControllerBase
     }
 
     [HttpGet]
-    [Route("/GetProfesores")]
+    [Route("/GetDocentes")]
     public IActionResult GetProfesores()
     {
-        var profesores = _usuarioRepository.GetProfesores();
+        var profesores = _usuarioRepository.GetDocentes();
         if (profesores.Count == 0)
         {
             return NotFound(new { msg = "No se encontraron profesores." });
         }
         return Ok(profesores);
+    }
+
+    [HttpGet]
+    [Route("/GetDocente")]
+    public IActionResult GetProfesor(int id_usuario)
+    {
+        var profesor = _usuarioRepository.GetDocente(id_usuario);
+        if (profesor.Id_usuario == 0)
+        {
+            return NotFound(new { msg = "El profesor no se encontró." });
+        }
+        return Ok(profesor);
     }
 
     [HttpGet]
@@ -125,7 +137,7 @@ public class UsuarioController : ControllerBase
         {
             return BadRequest(new { msg = "El usuario proporcionado es inválido." });
         }
-        _usuarioRepository.UpdateUsuario(usuario);
+        _usuarioRepository.PutAlumno(usuario);
         return Ok(new
         {
             msg = "El usuario se actualizó con éxito",

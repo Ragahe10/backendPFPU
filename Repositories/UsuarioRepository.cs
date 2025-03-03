@@ -73,14 +73,14 @@ public class UsuarioRepository : IUsuarioRepository
     }
 
 
-    public void PostProfesor(Profesor usuario)
+    public void PostDocente(Docente usuario)
     {
         var insertUsuarioQuery = @"INSERT INTO usuario (dni, contrasenia, correo, nombre, apellido, tipo, telefono) 
                            VALUES (@dni, @contrasenia, @correo, @nombre, @apellido, @tipo, @telefono);";
 
         var lastIdQuery = "SELECT last_insert_rowid();";
 
-        var insertProfesorQuery = @"INSERT INTO profesor (id_profesor) VALUES (@id_profesor)";
+        var insertProfesorQuery = @"INSERT INTO docente (id_docente) VALUES (@id_docente)";
 
         using (var connection = new SqliteConnection(_CadenaDeConexion))
         {
@@ -98,23 +98,23 @@ public class UsuarioRepository : IUsuarioRepository
                         insertCommand.Parameters.AddWithValue("@correo", usuario.Correo);
                         insertCommand.Parameters.AddWithValue("@nombre", usuario.Nombre);
                         insertCommand.Parameters.AddWithValue("@apellido", usuario.Apellido);
-                        insertCommand.Parameters.AddWithValue("@tipo", usuario.Tipo);
+                        insertCommand.Parameters.AddWithValue("@tipo", "docente");
                         insertCommand.Parameters.AddWithValue("@telefono", usuario.Telefono);
 
                         insertCommand.ExecuteNonQuery();
                     }
 
                     // Obtener el último ID insertado
-                    int id_profesor;
+                    int id_docente;
                     using (var lastIdCommand = new SqliteCommand(lastIdQuery, connection, transaction))
                     {
-                        id_profesor = Convert.ToInt32(lastIdCommand.ExecuteScalar());
+                        id_docente = Convert.ToInt32(lastIdCommand.ExecuteScalar());
                     }
 
                     // Insertar en la tabla profesor
                     using (var profesorCommand = new SqliteCommand(insertProfesorQuery, connection, transaction))
                     {
-                        profesorCommand.Parameters.AddWithValue("@id_profesor", id_profesor);
+                        profesorCommand.Parameters.AddWithValue("@id_docente", id_docente);
                         profesorCommand.ExecuteNonQuery();
                     }
 
@@ -304,6 +304,31 @@ public class UsuarioRepository : IUsuarioRepository
 
     }
 
+    public Usuario GetDocente(int id_usuario)
+    {
+        var docenteQuery = "SELECT * FROM usuario WHERE id_usuario = @id_usuario AND tipo = 'Docente'";
+        var docente = new Usuario();
+        using (SqliteConnection connection = new SqliteConnection(_CadenaDeConexion))
+        {
+            connection.Open();
+            var command = new SqliteCommand(docenteQuery, connection);
+            command.Parameters.Add(new SqliteParameter("@id_usuario", id_usuario));
+            var reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                docente.Id_usuario = reader.GetInt32(0);
+                docente.Dni = reader.GetInt32(1);
+                docente.Contrasenia = reader.GetString(2);
+                docente.Correo = reader.GetString(3);
+                docente.Nombre = reader.GetString(4);
+                docente.Apellido = reader.GetString(5);
+                docente.Tipo = reader.GetString(6);
+            }
+            connection.Close();
+        }
+        return docente;
+    }
+
     public void DeleteAlumno(int id_usuario)
     {
         var alumnoQuery = "DELETE FROM alumno WHERE id_alumno = @id_usuario";
@@ -343,7 +368,7 @@ public class UsuarioRepository : IUsuarioRepository
     }
 
 
-    public List<Usuario> GetProfesores()
+    public List<Usuario> GetDocentes()
     {
         var profesores = new List<Usuario>();
         var profesorQuery = "Select * from usuario where tipo = 'Docente'";
@@ -362,6 +387,7 @@ public class UsuarioRepository : IUsuarioRepository
                 profesor.Nombre = reader.GetString(4);
                 profesor.Apellido = reader.GetString(5);
                 profesor.Tipo = reader.GetString(6);
+                profesor.Telefono = reader.GetString(8);
                 profesores.Add(profesor);
             }
             connection.Close();
@@ -372,7 +398,7 @@ public class UsuarioRepository : IUsuarioRepository
     public List<Alumno> GetAlumnos()
     {
         var alumnos = new List<Alumno>();
-        var alumnoQuery = "SELECT id_usuario, dni, correo, nombre, apellido, direccion, matricula, fecha_nac, telefono FROM usuario INNER JOIN alumno ON usuario.id_usuario = alumno.id_alumno;";
+        var alumnoQuery = "SELECT id_usuario, dni, correo, nombre, apellido, direccion, matricula, fecha_nac, telefono, id_curso FROM usuario INNER JOIN alumno ON usuario.id_usuario = alumno.id_alumno;";
         using (SqliteConnection connection = new SqliteConnection(_CadenaDeConexion))
         {
             connection.Open();
@@ -390,6 +416,7 @@ public class UsuarioRepository : IUsuarioRepository
                 alumno.Matricula = reader.GetInt32(6); 
                 alumno.Fecha_nac = reader.GetDateTime(7);
                 alumno.Telefono = reader.GetString(8);
+                alumno.Id_curso = reader.GetInt32(9);
 
                 alumnos.Add(alumno);
             }
@@ -416,6 +443,7 @@ public class UsuarioRepository : IUsuarioRepository
                 administrador.Nombre = reader.GetString(4);
                 administrador.Apellido = reader.GetString(5);
                 administrador.Tipo = reader.GetString(6);
+                administrador.Telefono = reader.GetString(8);
                 administradores.Add(administrador);
             }
             connection.Close();
