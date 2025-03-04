@@ -1150,11 +1150,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\boni\\Source\\Repos\\backendPFPU\\backendPFPU.csproj",
+      "projectUniqueName": "C:\\Users\\boni\\source\\repos\\backendPFPU\\backendPFPU.csproj",
       "projectName": "backendPFPU",
-      "projectPath": "C:\\Users\\boni\\Source\\Repos\\backendPFPU\\backendPFPU.csproj",
+      "projectPath": "C:\\Users\\boni\\source\\repos\\backendPFPU\\backendPFPU.csproj",
       "packagesPath": "C:\\Users\\boni\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\boni\\Source\\Repos\\backendPFPU\\obj\\",
+      "outputPath": "C:\\Users\\boni\\source\\repos\\backendPFPU\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -1236,13 +1236,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problema al leer el archivo de caché C:\\Users\\boni\\Source\\Repos\\backendPFPU\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  }
 }

@@ -136,5 +136,65 @@ namespace backendPFPU.Repositories
             }
         }
 
+        public List<Materia> GetMateriasByAnio(int id_anio)
+        {
+            var query = "SELECT * FROM materia WHERE id_anio = @id_anio AND id_docente IS NULL";
+            var materias = new List<Materia>();
+            using (var connection = new SqliteConnection(_CadenaDeConexion))
+            {
+                connection.Open();
+                using (var command = new SqliteCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@id_anio", id_anio);
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            var materia = new Materia
+                            {
+                                Id_materia = reader.GetInt32(reader.GetOrdinal("id_materia")),
+                                materia = reader.GetString(reader.GetOrdinal("materia")),
+                                Id_anio = reader.GetInt32(reader.GetOrdinal("id_anio")),
+          
+                            };
+                            materias.Add(materia);
+                        }
+                    }
+                }
+                connection.Close();
+            }
+            return materias;
+        }
+
+        public List<Materia> GetMateriasByDocente(int id_docente)
+        {
+            var query = "SELECT * FROM materia WHERE id_docente = @id_docente";
+            var materias = new List<Materia>();
+            using (var connection = new SqliteConnection(_CadenaDeConexion))
+            {
+                connection.Open();
+                using (var command = new SqliteCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@id_docente", id_docente);
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            var materia = new Materia
+                            {
+                                Id_materia = reader.GetInt32(reader.GetOrdinal("id_materia")),
+                                materia = reader.GetString(reader.GetOrdinal("materia")),
+                                Id_anio = reader.GetInt32(reader.GetOrdinal("id_anio")),
+                                Id_docente = reader.GetInt32(reader.GetOrdinal("id_docente"))
+                            };
+                            materias.Add(materia);
+                        }
+                    }
+                }
+                connection.Close();
+            }
+            return materias;
+        }
+
     }
 }

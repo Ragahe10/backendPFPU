@@ -144,6 +144,36 @@ public class UsuarioController : ControllerBase
         });
     }
 
+    [HttpPut]
+    [Route("/UpdateDocente")]
+    public IActionResult UpdateUsuario(Docente usuario)
+    {
+        if (usuario.Id_usuario == 0)
+        {
+            return BadRequest(new { msg = "El usuario proporcionado es inválido." });
+        }
+        _usuarioRepository.UpdateDocente(usuario);
+        return Ok(new
+        {
+            msg = "El usuario se actualizó con éxito",
+        });
+    }
+
+    [HttpPut]
+    [Route("/UpdateAdministrador")]
+    public IActionResult UpdateUsuario(Administrador usuario)
+    {
+        if (usuario.Id_usuario == 0)
+        {
+            return BadRequest(new { msg = "El usuario proporcionado es inválido." });
+        }
+        _usuarioRepository.UpdateAdministrador(usuario);
+        return Ok(new
+        {
+            msg = "El usuario se actualizó con éxito",
+        });
+    }
+
     [HttpDelete]
     [Route("/DeleteAlumno")]
     public IActionResult DeleteUsuario(int id_usuario)
@@ -157,6 +187,38 @@ public class UsuarioController : ControllerBase
         return Ok(new
         {
             msg = "El alumno se eliminó con éxito",
+        });
+    }
+
+    [HttpDelete]
+    [Route("/DeleteDocente")]
+    public IActionResult DeleteDocente(int id_usuario)
+    {
+        var usuario = _usuarioRepository.GetUsuario(id_usuario);
+        if (usuario.Id_usuario == 0)
+        {
+            return BadRequest(new { msg = "El id proporcionado es inválido." });
+        }
+        _usuarioRepository.DeleteDocente(id_usuario);
+        return Ok(new
+        {
+            msg = "El docente se eliminó con éxito",
+        });
+    }
+
+    [HttpDelete]
+    [Route("/DeleteAdministrador")]
+    public IActionResult DeleteAdministrador(int id_usuario)
+    {
+        var usuario = _usuarioRepository.GetUsuario(id_usuario);
+        if (usuario.Id_usuario == 0)
+        {
+            return BadRequest(new { msg = "El id proporcionado es inválido." });
+        }
+        _usuarioRepository.DeleteAdministrador(id_usuario);
+        return Ok(new
+        {
+            msg = "El administrador se eliminó con éxito",
         });
     }
 

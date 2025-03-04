@@ -8,5 +8,8 @@ namespace backendPFPU.Repositories
         void AddMateria(Materia materia);
         void UpdateMateria(Materia materia);
         void DeleteMateria(int id);
+        List<Materia> GetMateriasByAnio(int id_anio);
+
+        List<Materia> GetMateriasByDocente(int id_docente);
     }
 }

@@ -5,10 +5,14 @@ namespace backendPFPU.Respositories;
 public interface IUsuarioRepository{
     public void PostAdministrador(Administrador usuario);
     public void PostDocente(Docente usuario);
+    public void UpdateDocente(Docente usuario);
+    public void UpdateAdministrador(Administrador usuario);
     public void PostAlumno(Alumno usuario);
     public void PutAlumno(Alumno usuario);
 
     public void DeleteAlumno(int id_usuario);
+    public void DeleteDocente(int id_usuario);
+    public void DeleteAdministrador(int id_usuario);
     public List<Usuario> GetUsuarios();
 
     public List<Usuario> GetDocentes();

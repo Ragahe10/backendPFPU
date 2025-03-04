@@ -7,6 +7,19 @@ using backendPFPU.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Agregar CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll",
+        builder =>
+        {
+            builder
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader();
+        });
+});
+
 // Agregar servicios al contenedor
 builder.Services.AddControllers();
 // Aprende más sobre cómo configurar OpenAPI en https://aka.ms/aspnet/openapi
@@ -49,18 +62,13 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
-builder.Services.AddCors(options =>
+
+
+builder.WebHost.ConfigureKestrel(options =>
 {
-    options.AddPolicy("AllowReactApp", policy =>
-    {
-        policy.WithOrigins("http://localhost:3000")
-              .AllowAnyMethod()
-              .AllowAnyHeader();
-    });
+    options.ListenAnyIP(5000); // Puerto HTTP
+    options.ListenAnyIP(7213, listenOptions => listenOptions.UseHttps()); // Puerto HTTPS
 });
-
-
-
 
 
 // Crear la aplicación
@@ -73,10 +81,12 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+// Usar CORS - Debe ir antes de UseAuthentication y UseAuthorization
+app.UseCors("AllowAll");
+
 app.UseHttpsRedirection();
 
-// Y en la configuración de la app:
-app.UseCors("AllowReactApp");
+
 
 // Habilitar autenticación y autorización (Agregado)
 app.UseAuthentication();  // Agregar autenticación

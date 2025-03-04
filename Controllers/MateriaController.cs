@@ -112,5 +112,37 @@ namespace backendPFPU.Controllers
                 return StatusCode(500, $"Error al actualizar materia: {ex.Message}");
             }
         }
+
+        [HttpGet]
+        [Route("/GetMateriasByAnio")]
+        public IActionResult GetMateriasByAnio(int id_anio)
+        {
+            try
+            {
+                var materias = _materiaRepository.GetMateriasByAnio(id_anio);
+               
+                return Ok(materias);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Error al obtener materias: {ex.Message}");
+            }
+        }
+
+        [HttpGet]
+        [Route("/GetMateriasByDocente")]
+        public IActionResult GetMateriasByDocente(int id_docente)
+        {
+            try
+            {
+                var materias = _materiaRepository.GetMateriasByDocente(id_docente);
+   
+                return Ok(materias);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Error al obtener materias: {ex.Message}");
+            }
+        }
     }
 }

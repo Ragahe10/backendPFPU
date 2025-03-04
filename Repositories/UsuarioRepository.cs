@@ -42,7 +42,7 @@ public class UsuarioRepository : IUsuarioRepository
                         usuarioCommand.Parameters.AddWithValue("@correo", usuario.Correo);
                         usuarioCommand.Parameters.AddWithValue("@nombre", usuario.Nombre);
                         usuarioCommand.Parameters.AddWithValue("@apellido", usuario.Apellido);
-                        usuarioCommand.Parameters.AddWithValue("@tipo", usuario.Tipo);
+                        usuarioCommand.Parameters.AddWithValue("@tipo", "Administrativo");
                         usuarioCommand.Parameters.AddWithValue("@telefono", usuario.Telefono);
                         usuarioCommand.ExecuteNonQuery();
                     }
@@ -98,7 +98,7 @@ public class UsuarioRepository : IUsuarioRepository
                         insertCommand.Parameters.AddWithValue("@correo", usuario.Correo);
                         insertCommand.Parameters.AddWithValue("@nombre", usuario.Nombre);
                         insertCommand.Parameters.AddWithValue("@apellido", usuario.Apellido);
-                        insertCommand.Parameters.AddWithValue("@tipo", "docente");
+                        insertCommand.Parameters.AddWithValue("@tipo", "Docente");
                         insertCommand.Parameters.AddWithValue("@telefono", usuario.Telefono);
 
                         insertCommand.ExecuteNonQuery();
@@ -367,6 +367,76 @@ public class UsuarioRepository : IUsuarioRepository
         }
     }
 
+    public void DeleteDocente(int id_usuario)
+    {
+        var docenteQuery = "DELETE FROM docente WHERE id_docente = @id_usuario";
+        var usuarioQuery = "DELETE FROM usuario WHERE id_usuario = @id_usuario";
+        using (SqliteConnection connection = new SqliteConnection(_CadenaDeConexion))
+        {
+            connection.Open();
+            using (var transaction = connection.BeginTransaction())
+            {
+                try
+                {
+                    // Primero elimina de la tabla docente
+                    using (var docenteCommand = new SqliteCommand(docenteQuery, connection, transaction))
+                    {
+                        docenteCommand.Parameters.AddWithValue("@id_usuario", id_usuario);
+                        docenteCommand.ExecuteNonQuery();
+                    }
+                    // Luego elimina de la tabla usuario
+                    using (var usuarioCommand = new SqliteCommand(usuarioQuery, connection, transaction))
+                    {
+                        usuarioCommand.Parameters.AddWithValue("@id_usuario", id_usuario);
+                        usuarioCommand.ExecuteNonQuery();
+                    }
+                    transaction.Commit();
+                }
+                catch
+                {
+                    transaction.Rollback();
+                    throw;
+                }
+            }
+            connection.Close();
+        }
+    }
+
+    public void DeleteAdministrador(int id_usuario)
+    {
+        var administradorQuery = "DELETE FROM administrativo WHERE id_admin = @id_usuario";
+        var usuarioQuery = "DELETE FROM usuario WHERE id_usuario = @id_usuario";
+        using (SqliteConnection connection = new SqliteConnection(_CadenaDeConexion))
+        {
+            connection.Open();
+            using (var transaction = connection.BeginTransaction())
+            {
+                try
+                {
+                    // Primero elimina de la tabla administrativo
+                    using (var administradorCommand = new SqliteCommand(administradorQuery, connection, transaction))
+                    {
+                        administradorCommand.Parameters.AddWithValue("@id_usuario", id_usuario);
+                        administradorCommand.ExecuteNonQuery();
+                    }
+                    // Luego elimina de la tabla usuario
+                    using (var usuarioCommand = new SqliteCommand(usuarioQuery, connection, transaction))
+                    {
+                        usuarioCommand.Parameters.AddWithValue("@id_usuario", id_usuario);
+                        usuarioCommand.ExecuteNonQuery();
+                    }
+                    transaction.Commit();
+                }
+                catch
+                {
+                    transaction.Rollback();
+                    throw;
+                }
+            }
+            connection.Close();
+        }
+    }
+
 
     public List<Usuario> GetDocentes()
     {
@@ -451,6 +521,89 @@ public class UsuarioRepository : IUsuarioRepository
         return administradores;
 
 
+    }
+
+    public void UpdateDocente(Docente usuario)
+    {
+        var usuarioQuery = @"UPDATE usuario 
+                         SET dni = @dni, 
+                             correo = @correo, 
+                             nombre = @nombre, 
+                             apellido = @apellido, 
+                             telefono = @telefono 
+                         WHERE id_usuario = @id_usuario";
+
+     
+
+        using (var connection = new SqliteConnection(_CadenaDeConexion))
+        {
+            connection.Open();
+            using (var transaction = connection.BeginTransaction())
+            {
+                try
+                {
+                    // Actualizar en la tabla usuario
+                    using (var usuarioCommand = new SqliteCommand(usuarioQuery, connection, transaction))
+                    {
+                        usuarioCommand.Parameters.AddWithValue("@dni", usuario.Dni.ToString());
+                        usuarioCommand.Parameters.AddWithValue("@correo", usuario.Correo);
+                        usuarioCommand.Parameters.AddWithValue("@nombre", usuario.Nombre);
+                        usuarioCommand.Parameters.AddWithValue("@apellido", usuario.Apellido);
+                        usuarioCommand.Parameters.AddWithValue("@telefono", usuario.Telefono);
+                        usuarioCommand.Parameters.AddWithValue("@id_usuario", usuario.Id_usuario);
+                        usuarioCommand.ExecuteNonQuery();
+                    }
+
+                    transaction.Commit();
+                }
+                catch
+                {
+                    transaction.Rollback();
+                    throw;
+                }
+            }
+            connection.Close();
+        }
+
+    }
+
+    public void UpdateAdministrador(Administrador usuario)
+    {
+        var usuarioQuery = @"UPDATE usuario 
+                         SET dni = @dni, 
+                             correo = @correo, 
+                             nombre = @nombre, 
+                             apellido = @apellido, 
+                             telefono = @telefono 
+                         WHERE id_usuario = @id_usuario";
+        using (var connection = new SqliteConnection(_CadenaDeConexion))
+        {
+            connection.Open();
+            using (var transaction = connection.BeginTransaction())
+            {
+                try
+                {
+                    // Actualizar en la tabla usuario
+                    using (var usuarioCommand = new SqliteCommand(usuarioQuery, connection, transaction))
+                    {
+                        usuarioCommand.Parameters.AddWithValue("@dni", usuario.Dni.ToString());
+                        usuarioCommand.Parameters.AddWithValue("@correo", usuario.Correo);
+                        usuarioCommand.Parameters.AddWithValue("@nombre", usuario.Nombre);
+                        usuarioCommand.Parameters.AddWithValue("@apellido", usuario.Apellido);
+                        usuarioCommand.Parameters.AddWithValue("@telefono", usuario.Telefono);
+                        usuarioCommand.Parameters.AddWithValue("@id_usuario", usuario.Id_usuario);
+                        usuarioCommand.ExecuteNonQuery();
+                    }
+                    transaction.Commit();
+                }
+                catch
+                {
+                    transaction.Rollback();
+                    throw;
+                }
+            }
+            connection.Close();
+        }
     }
 
     public void UpdateUsuario(Usuario usuario) { }
