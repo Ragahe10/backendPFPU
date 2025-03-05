@@ -40,7 +40,7 @@ namespace backendPFPU.Controllers
         }
 
         [HttpDelete]
-        [Route("/DeleteMateria")]
+        [Route("/DeleteMateria/{id}")]
         public IActionResult DeleteMateria(int id)
         {
             try
