@@ -16,6 +16,38 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "backendPFPU.Controllers.PagoController",
+    "Method": "AddPago",
+    "RelativePath": "AddPago",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pago",
+        "Type": "backendPFPU.Models.Pago",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "backendPFPU.Controllers.TipoPagoController",
+    "Method": "AddTipoPago",
+    "RelativePath": "AddTipoPago",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "tipoPago",
+        "Type": "backendPFPU.Models.TipoPago",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "AuthController",
     "Method": "Login",
     "RelativePath": "api/auth/login",
@@ -128,6 +160,38 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "backendPFPU.Controllers.PagoController",
+    "Method": "DeletePago",
+    "RelativePath": "DeletePago/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "backendPFPU.Controllers.TipoPagoController",
+    "Method": "DeleteTipoPago",
+    "RelativePath": "DeleteTipoPago/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "backendPFPU.Controllers.UsuarioController",
     "Method": "GetAdministradores",
     "RelativePath": "GetAdministradores",
@@ -151,6 +215,26 @@
     "ContainingType": "backendPFPU.Controllers.CursoController",
     "Method": "GetAllCursos",
     "RelativePath": "GetAllCursos",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "backendPFPU.Controllers.PagoController",
+    "Method": "GetAllPago",
+    "RelativePath": "GetAllPago",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "backendPFPU.Controllers.TipoPagoController",
+    "Method": "GetAllTipoPago",
+    "RelativePath": "GetAllTipoPago",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -284,6 +368,54 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "backendPFPU.Controllers.PagoController",
+    "Method": "GetPago",
+    "RelativePath": "GetPago/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "backendPFPU.Controllers.PagoController",
+    "Method": "GetPagosAlumno",
+    "RelativePath": "GetPagosAlumno/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "backendPFPU.Controllers.TipoPagoController",
+    "Method": "GetTipoPago",
+    "RelativePath": "GetTipoPago/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "backendPFPU.Controllers.UsuarioController",
     "Method": "GetUsuario",
     "RelativePath": "GetUsuario",
@@ -412,6 +544,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "backendPFPU.Controllers.TipoPagoController",
+    "Method": "PutTipoPago",
+    "RelativePath": "PutTipoPago",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "tipoPago",
+        "Type": "backendPFPU.Models.TipoPago",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "backendPFPU.Controllers.UsuarioController",
     "Method": "UpdateUsuario",
     "RelativePath": "UpdateAdministrador",
@@ -470,6 +618,22 @@
       {
         "Name": "materia",
         "Type": "backendPFPU.Models.Materia",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "backendPFPU.Controllers.PagoController",
+    "Method": "UpdatePago",
+    "RelativePath": "UpdatePago",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "pago",
+        "Type": "backendPFPU.Models.Pago",
         "IsRequired": true
       }
     ],
