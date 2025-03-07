@@ -22,6 +22,8 @@ public interface IUsuarioRepository{
     public List<Usuario> GetAdministradores();
     public Usuario GetUsuario(int id_usuario);
 
+    public Alumno GetAlumno(int id_usuario);
+
     public Usuario GetDocente(int id_usuario);
     public void UpdateUsuario(Usuario usuario);
     public void DeleteUsuario(int id_usuario);

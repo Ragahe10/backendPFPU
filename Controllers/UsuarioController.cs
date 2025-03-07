@@ -129,6 +129,18 @@ public class UsuarioController : ControllerBase
         return Ok(usuario);
     }
 
+    [HttpGet]
+    [Route("/GetAlumno")]
+    public IActionResult GetAlumno(int id_usuario)
+    {
+        var alumno = _usuarioRepository.GetAlumno(id_usuario);
+        if (alumno.Id_usuario == 0)
+        {
+            return NotFound(new { msg = "El alumno no se encontró." });
+        }
+        return Ok(alumno);
+    }
+
     [HttpPut]
     [Route("/UpdateAlumno")]
     public IActionResult UpdateUsuario(Alumno usuario)

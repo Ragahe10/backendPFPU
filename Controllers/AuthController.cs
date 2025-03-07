@@ -55,10 +55,62 @@ public class AuthController : ControllerBase
         return Unauthorized("Usuario o contraseña incorrectos");
     }
 
+    [HttpPost("ChangePassword")]
+    public IActionResult ChangePassword([FromBody] ChangePasswordRequest request)
+    {
+        using (var connection = new SqliteConnection(_connectionString))
+        {
+            connection.Open();
+
+            // Obtener la contraseña actual del usuario
+            var getPasswordQuery = "SELECT contrasenia FROM usuario WHERE id_usuario = @UserId";
+            using (var getPasswordCommand = new SqliteCommand(getPasswordQuery, connection))
+            {
+                getPasswordCommand.Parameters.AddWithValue("@UserId", request.IdUsuario);
+
+                var hashedPassword = getPasswordCommand.ExecuteScalar() as string;
+                if (hashedPassword == null || !_passwordService.Verificar(hashedPassword, request.OldPassword))
+                {
+                    return Unauthorized("Contraseña actual incorrecta");
+                }
+            }
+
+            // Hashear la nueva contraseña
+            var newHashedPassword = _passwordService.Encriptar(request.NewPassword);
+
+            // Actualizar la contraseña en la base de datos
+            var updatePasswordQuery = "UPDATE usuario SET contrasenia = @NewPassword WHERE id_usuario = @UserId";
+            using (var updatePasswordCommand = new SqliteCommand(updatePasswordQuery, connection))
+            {
+                updatePasswordCommand.Parameters.AddWithValue("@NewPassword", newHashedPassword);
+                updatePasswordCommand.Parameters.AddWithValue("@UserId", request.IdUsuario);
+
+                int rowsAffected = updatePasswordCommand.ExecuteNonQuery();
+                if (rowsAffected > 0)
+                {
+                    return Ok("Contraseña actualizada correctamente");
+                }
+                else
+                {
+                    return BadRequest("Error al actualizar la contraseña");
+                }
+            }
+        }
+    }
+
     // Modelo de solicitud de login
     public class LoginRequest
     {
         public string Dni { get; set; }
         public string Password { get; set; }
     }
+
+    // Modelo de solicitud para cambio de contraseña
+    public class ChangePasswordRequest
+    {
+        public long IdUsuario { get; set; }
+        public string OldPassword { get; set; }
+        public string NewPassword { get; set; }
+    }
 }
+

@@ -270,6 +270,8 @@ public class UsuarioRepository : IUsuarioRepository
                 usuario.Nombre = reader.GetString(4);
                 usuario.Apellido = reader.GetString(5);
                 usuario.Tipo = reader.GetString(6);
+                usuario.Activo = reader.GetInt32(7);
+                usuario.Telefono = reader.GetString(8);
                 usuarios.Add(usuario);
             }
             connection.Close();
@@ -297,12 +299,47 @@ public class UsuarioRepository : IUsuarioRepository
                 usuario.Nombre = reader.GetString(4);
                 usuario.Apellido = reader.GetString(5);
                 usuario.Tipo = reader.GetString(6);
+                usuario.Activo = reader.GetInt32(7);
+                usuario.Telefono = reader.GetString(8);
             }
             connection.Close();
         }
         return usuario;
 
     }
+
+    public Alumno GetAlumno(int id_usuario)
+    {
+        var alumnoQuery = "SELECT id_usuario, dni, correo, nombre, apellido, direccion, matricula, fecha_nac, telefono, id_curso FROM usuario INNER JOIN alumno ON usuario.id_usuario = alumno.id_alumno WHERE id_usuario = @id_usuario";
+        var alumno = new Alumno();
+
+        using (SqliteConnection connection = new SqliteConnection(_CadenaDeConexion))
+        {
+            connection.Open();
+            var command = new SqliteCommand(alumnoQuery, connection);
+            command.Parameters.AddWithValue("@id_usuario", id_usuario);
+            var reader = command.ExecuteReader();
+
+            if (reader.Read()) 
+            {
+                alumno.Id_usuario = reader.GetInt32(0);
+                alumno.Dni = reader.GetInt32(1);
+                alumno.Correo = reader.GetString(2);
+                alumno.Nombre = reader.GetString(3);
+                alumno.Apellido = reader.GetString(4);
+                alumno.Direccion = reader.GetString(5);
+                alumno.Matricula = reader.GetInt32(6);
+                alumno.Fecha_nac = reader.GetDateTime(7);
+                alumno.Telefono = reader.GetString(8);
+                alumno.Id_curso = reader.GetInt32(9);
+            }
+
+            connection.Close();
+        }
+
+        return alumno;
+    }
+
 
     public Usuario GetDocente(int id_usuario)
     {
