@@ -22,7 +22,7 @@ builder.Services.AddCors(options =>
 
 // Agregar servicios al contenedor
 builder.Services.AddControllers();
-// Aprende más sobre cómo configurar OpenAPI en https://aka.ms/aspnet/openapi
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -38,6 +38,7 @@ builder.Services.AddScoped<IMateriaRepository, MateriaRepository>();
 builder.Services.AddScoped<ITipoPagoRepository, TipoPagoRepository>();
 builder.Services.AddScoped<IPagoRepository, PagoRepository>();
 builder.Services.AddScoped<INotaRepository, NotaRepository>();
+builder.Services.AddScoped<IAsistenciaRepository, AsistenciaRepository>();
 builder.Services.AddScoped<JwtService>(); // Registrar JwtService
 builder.Services.AddSingleton<PasswordService>(); // Registrar PasswordService
 

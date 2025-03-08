@@ -125,6 +125,178 @@
         }
       }
     },
+    "/CreateAsistencia": {
+      "post": {
+        "tags": [
+          "Asistencia"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Asistencia"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Asistencia"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Asistencia"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/UpdateAsistencia": {
+      "put": {
+        "tags": [
+          "Asistencia"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Asistencia"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Asistencia"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Asistencia"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/DeleteAsistencia/{id_asistencia}/{id_alumno}/{id_materia}/{fecha}": {
+      "delete": {
+        "tags": [
+          "Asistencia"
+        ],
+        "parameters": [
+          {
+            "name": "id_asistencia",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "id_alumno",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "id_materia",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "fecha",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/GetAsistencia/{id_asistencia}/{id_alumno}/{id_materia}/{fecha}": {
+      "get": {
+        "tags": [
+          "Asistencia"
+        ],
+        "parameters": [
+          {
+            "name": "id_asistencia",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "id_alumno",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "id_materia",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "fecha",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/GetAllAsistencias": {
+      "get": {
+        "tags": [
+          "Asistencia"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/auth/login": {
       "post": {
         "tags": [
@@ -1460,6 +1632,32 @@
             "format": "int32"
           },
           "anio": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Asistencia": {
+        "type": "object",
+        "properties": {
+          "id_asistencia": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "id_alumno": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "id_materia": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "fecha": {
+            "type": "string",
+            "nullable": true
+          },
+          "estado": {
             "type": "string",
             "nullable": true
           }

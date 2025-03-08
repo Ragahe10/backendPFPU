@@ -80,6 +80,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "backendPFPU.Controllers.AsistenciaController",
+    "Method": "CreateAsistencia",
+    "RelativePath": "CreateAsistencia",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "asistencia",
+        "Type": "backendPFPU.Models.Asistencia",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "backendPFPU.Controllers.NotaController",
     "Method": "CreateNota",
     "RelativePath": "CreateNota",
@@ -138,6 +154,37 @@
       {
         "Name": "id",
         "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "backendPFPU.Controllers.AsistenciaController",
+    "Method": "DeleteAsistencia",
+    "RelativePath": "DeleteAsistencia/{id_asistencia}/{id_alumno}/{id_materia}/{fecha}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id_asistencia",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "id_alumno",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "id_materia",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "fecha",
+        "Type": "System.String",
         "IsRequired": true
       }
     ],
@@ -275,6 +322,16 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "backendPFPU.Controllers.AsistenciaController",
+    "Method": "GetAllAsistencias",
+    "RelativePath": "GetAllAsistencias",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "backendPFPU.Controllers.CursoController",
     "Method": "GetAllCursos",
     "RelativePath": "GetAllCursos",
@@ -373,6 +430,37 @@
       {
         "Name": "id",
         "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "backendPFPU.Controllers.AsistenciaController",
+    "Method": "GetAsistencia",
+    "RelativePath": "GetAsistencia/{id_asistencia}/{id_alumno}/{id_materia}/{fecha}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id_asistencia",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "id_alumno",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "id_materia",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "fecha",
+        "Type": "System.String",
         "IsRequired": true
       }
     ],
@@ -770,6 +858,22 @@
       {
         "Name": "usuario",
         "Type": "backendPFPU.Models.Alumno",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "backendPFPU.Controllers.AsistenciaController",
+    "Method": "UpdateAsistencia",
+    "RelativePath": "UpdateAsistencia",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "asistencia",
+        "Type": "backendPFPU.Models.Asistencia",
         "IsRequired": true
       }
     ],
