@@ -37,6 +37,7 @@ builder.Services.AddScoped<ICursoRepository, CursoRepository>();
 builder.Services.AddScoped<IMateriaRepository, MateriaRepository>();
 builder.Services.AddScoped<ITipoPagoRepository, TipoPagoRepository>();
 builder.Services.AddScoped<IPagoRepository, PagoRepository>();
+builder.Services.AddScoped<INotaRepository, NotaRepository>();
 builder.Services.AddScoped<JwtService>(); // Registrar JwtService
 builder.Services.AddSingleton<PasswordService>(); // Registrar PasswordService
 

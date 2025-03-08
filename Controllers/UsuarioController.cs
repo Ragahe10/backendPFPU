@@ -141,6 +141,30 @@ public class UsuarioController : ControllerBase
         return Ok(alumno);
     }
 
+    [HttpGet]
+    [Route("/GetAlumnosByMateria")]
+    public IActionResult GetAlumnosByMateria(int id_materia)
+    {
+        var alumnos = _usuarioRepository.GetAlumnosByMateria(id_materia);
+        if (alumnos.Count == 0)
+        {
+            return NotFound(new { msg = "No se encontraron alumnos." });
+        }
+        return Ok(alumnos);
+    }
+
+    [HttpGet]
+    [Route("/GetAlumnosByCurso")]
+    public IActionResult GetAlumnosByCurso(int id_curso)
+    {
+        var alumnos = _usuarioRepository.GetAlumnosByCurso(id_curso);
+        if (alumnos.Count == 0)
+        {
+            return NotFound(new { msg = "No se encontraron alumnos." });
+        }
+        return Ok(alumnos);
+    }
+
     [HttpPut]
     [Route("/UpdateAlumno")]
     public IActionResult UpdateUsuario(Alumno usuario)

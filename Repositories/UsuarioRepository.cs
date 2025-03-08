@@ -340,6 +340,72 @@ public class UsuarioRepository : IUsuarioRepository
         return alumno;
     }
 
+    public List<Alumno> GetAlumnosByMateria(int id_materia)
+    {
+        var alumnos = new List<Alumno>();
+        var query = "SELECT id_usuario, dni, contrasenia, correo, nombre, apellido, tipo, activo, telefono, direccion, matricula, fecha_nac, id_curso FROM usuario INNER JOIN alumno ON usuario.id_usuario = alumno.id_alumno INNER JOIN curso USING(id_curso) INNER JOIN anio USING(id_anio) INNER JOIN materia USING(id_anio) WHERE id_materia = @id_materia";
+        using (SqliteConnection connection = new SqliteConnection(_CadenaDeConexion))
+        {
+            connection.Open();
+            var command = new SqliteCommand(query, connection);
+            command.Parameters.AddWithValue("@id_materia", id_materia);
+            var reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                var alumno = new Alumno();
+                alumno.Id_usuario = reader.GetInt32(0);
+                alumno.Dni = reader.GetInt32(1);
+                alumno.Contrasenia = reader.GetString(2);
+                alumno.Correo = reader.GetString(3);
+                alumno.Nombre = reader.GetString(4);
+                alumno.Apellido = reader.GetString(5);
+                alumno.Tipo = reader.GetString(6);
+                alumno.Activo = reader.GetInt32(7);
+                alumno.Telefono = reader.GetString(8);
+                alumno.Direccion = reader.GetString(9);
+                alumno.Matricula = reader.GetInt32(10);
+                alumno.Fecha_nac = reader.GetDateTime(11);
+                alumno.Id_curso = reader.GetInt32(12);
+                alumnos.Add(alumno);
+            
+            }
+            connection.Close();
+        }
+        return alumnos;
+    }
+
+    public List<Alumno> GetAlumnosByCurso(int id_curso)
+    {
+        var query = "SELECT id_usuario, dni, contrasenia, correo, nombre, apellido, tipo, activo, telefono, direccion, matricula, fecha_nac, id_curso FROM usuario INNER JOIN alumno ON usuario.id_usuario = alumno.id_alumno WHERE alumno.id_curso = @id_curso";
+        var alumnos = new List<Alumno>();
+        using (SqliteConnection connection = new SqliteConnection(_CadenaDeConexion))
+        {
+            connection.Open();
+            var command = new SqliteCommand(query, connection);
+            command.Parameters.AddWithValue("@id_curso", id_curso);
+            var reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                var alumno = new Alumno();
+                alumno.Id_usuario = reader.GetInt32(0);
+                alumno.Dni = reader.GetInt32(1);
+                alumno.Contrasenia = reader.GetString(2);
+                alumno.Correo = reader.GetString(3);
+                alumno.Nombre = reader.GetString(4);
+                alumno.Apellido = reader.GetString(5);
+                alumno.Tipo = reader.GetString(6);
+                alumno.Telefono = reader.GetString(8);
+                alumno.Direccion = reader.GetString(9);
+                alumno.Matricula = reader.GetInt32(10);
+                alumno.Fecha_nac = reader.GetDateTime(11);
+                alumno.Id_curso = reader.GetInt32(12);
+                alumnos.Add(alumno);
+            }
+            connection.Close();
+        }
+        return alumnos;
+    }
+
 
     public Usuario GetDocente(int id_usuario)
     {
