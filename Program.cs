@@ -41,6 +41,7 @@ builder.Services.AddScoped<INotaRepository, NotaRepository>();
 builder.Services.AddScoped<IAsistenciaRepository, AsistenciaRepository>();
 builder.Services.AddScoped<JwtService>(); // Registrar JwtService
 builder.Services.AddSingleton<PasswordService>(); // Registrar PasswordService
+builder.Services.AddSingleton<EmailService>(); // Registrar EmailService
 
 // Configuración de JWT (Agregado)
 var jwtSettings = builder.Configuration.GetSection("Jwt");

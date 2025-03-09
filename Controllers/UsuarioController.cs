@@ -11,11 +11,13 @@ public class UsuarioController : ControllerBase
 {
     private readonly ILogger<UsuarioController> _logger;
     private IUsuarioRepository _usuarioRepository;
+    private readonly EmailService _emailService;
 
-    public UsuarioController(ILogger<UsuarioController> logger, IUsuarioRepository usuarioRepository)
+    public UsuarioController(ILogger<UsuarioController> logger, IUsuarioRepository usuarioRepository, EmailService emailService)
     {
         _logger = logger;
         _usuarioRepository = usuarioRepository;
+        _emailService = emailService;
     }
 
     [HttpPost]
@@ -39,7 +41,7 @@ public class UsuarioController : ControllerBase
 
     [HttpPost]
     [Route("/PostAdministrador")]
-    public IActionResult PostAdministrador(Administrador usuario)
+    public async Task<IActionResult> PostAdministrador(Administrador usuario)
     {
         if (usuario == null)
         {
@@ -47,10 +49,8 @@ public class UsuarioController : ControllerBase
         }
         // Guardar el usuario utilizando el repositorio
         _usuarioRepository.PostAdministrador(usuario);
-        return Ok(new
-        {
-            msg = "El Administrador se guardó con éxito",
-        });
+        await _emailService.EnviarCorreoBienvenida(usuario.Correo, usuario.Nombre, usuario.Dni, usuario.Contrasenia);
+        return Ok(new { msg = "El Administrador se guardó con éxito y se envió un correo de bienvenida." });
     }
 
     [HttpPost]

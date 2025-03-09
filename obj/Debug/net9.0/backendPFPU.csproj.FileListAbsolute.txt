@@ -202,3 +202,6 @@ C:\Users\boni\source\repos\backendPFPU\obj\Debug\net9.0\backendPFPU.pdb
 C:\Users\boni\source\repos\backendPFPU\obj\Debug\net9.0\backendPFPU.genruntimeconfig.cache
 C:\Users\boni\source\repos\backendPFPU\obj\Debug\net9.0\ref\backendPFPU.dll
 C:\Users\boni\Source\Repos\backendPFPU\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
+C:\Users\boni\Source\Repos\backendPFPU\bin\Debug\net9.0\BouncyCastle.Cryptography.dll
+C:\Users\boni\Source\Repos\backendPFPU\bin\Debug\net9.0\MailKit.dll
+C:\Users\boni\Source\Repos\backendPFPU\bin\Debug\net9.0\MimeKit.dll
