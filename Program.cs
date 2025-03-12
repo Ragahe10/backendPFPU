@@ -39,6 +39,7 @@ builder.Services.AddScoped<ITipoPagoRepository, TipoPagoRepository>();
 builder.Services.AddScoped<IPagoRepository, PagoRepository>();
 builder.Services.AddScoped<INotaRepository, NotaRepository>();
 builder.Services.AddScoped<IAsistenciaRepository, AsistenciaRepository>();
+builder.Services.AddScoped<IDeudaRepository, DeudaRepository>();
 builder.Services.AddScoped<JwtService>(); // Registrar JwtService
 builder.Services.AddSingleton<PasswordService>(); // Registrar PasswordService
 builder.Services.AddSingleton<EmailService>(); // Registrar EmailService

@@ -479,6 +479,149 @@
         }
       }
     },
+    "/AddDeuda": {
+      "post": {
+        "tags": [
+          "Deuda"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Deuda"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Deuda"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Deuda"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/DeleteDeuda/{id}": {
+      "delete": {
+        "tags": [
+          "Deuda"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/GetAllDeuda": {
+      "get": {
+        "tags": [
+          "Deuda"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/GetDeuda/{id}": {
+      "get": {
+        "tags": [
+          "Deuda"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/UpdateDeuda": {
+      "put": {
+        "tags": [
+          "Deuda"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Deuda"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Deuda"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Deuda"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/GetDeudasAlumno/{id}": {
+      "get": {
+        "tags": [
+          "Deuda"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/AddMateria": {
       "post": {
         "tags": [
@@ -1704,6 +1847,36 @@
         },
         "additionalProperties": false
       },
+      "Deuda": {
+        "type": "object",
+        "properties": {
+          "id_deuda": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "fecha_vencimiento": {
+            "type": "string",
+            "nullable": true
+          },
+          "id_alumno": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "estado": {
+            "type": "string",
+            "nullable": true
+          },
+          "monto": {
+            "type": "number",
+            "format": "float"
+          },
+          "id_tipo": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
       "Docente": {
         "type": "object",
         "properties": {
@@ -1832,15 +2005,11 @@
             "type": "string",
             "nullable": true
           },
-          "id_tipo": {
+          "id_alumno": {
             "type": "integer",
             "format": "int32"
           },
-          "estado": {
-            "type": "string",
-            "nullable": true
-          },
-          "id_alumno": {
+          "id_deuda": {
             "type": "integer",
             "format": "int32"
           }
