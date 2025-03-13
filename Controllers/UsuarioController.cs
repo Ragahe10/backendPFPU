@@ -22,7 +22,7 @@ public class UsuarioController : ControllerBase
 
     [HttpPost]
     [Route("/PostDocente")]
-    public IActionResult PostDocente(Docente usuario)
+    public async Task<IActionResult> PostDocente(Docente usuario)
     {
         if (usuario == null)
         {
@@ -31,11 +31,8 @@ public class UsuarioController : ControllerBase
 
         // Guardar el usuario utilizando el repositorio
         _usuarioRepository.PostDocente(usuario);
-
-        return Ok(new
-        {
-            msg = "El Profesor se guardó con éxito",
-        });
+        await _emailService.EnviarCorreoBienvenida(usuario.Correo, usuario.Nombre, usuario.Dni, usuario.Contrasenia);
+        return Ok(new { msg = "El Docente se guardó con éxito y se envió un correo de bienvenida." });
     }
 
 
@@ -55,7 +52,7 @@ public class UsuarioController : ControllerBase
 
     [HttpPost]
     [Route("/PostAlumno")]
-    public IActionResult PostAlumno(Alumno usuario)
+    public async Task<IActionResult> PostAlumno(Alumno usuario)
     {
         if (usuario == null)
         {
@@ -63,10 +60,9 @@ public class UsuarioController : ControllerBase
         }
         // Guardar el usuario utilizando el repositorio
         _usuarioRepository.PostAlumno(usuario);
-        return Ok(new
-        {
-            msg = "El Alumno se guardó con éxito",
-        });
+        await _emailService.EnviarCorreoBienvenida(usuario.Correo, usuario.Nombre, usuario.Dni, usuario.Contrasenia);
+
+        return Ok(new { msg = "El Alumno se guardó con éxito y se envió un correo de bienvenida." });
     }
 
     [HttpGet]

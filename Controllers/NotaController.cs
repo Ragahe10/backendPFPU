@@ -1,5 +1,6 @@
 ﻿using backendPFPU.Models;
 using backendPFPU.Repositories;
+using backendPFPU.Respositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,19 +12,41 @@ namespace backendPFPU.Controllers
     {
         private readonly INotaRepository _notaRepository;
 
-        public NotaController(INotaRepository notaRepository)
+        private readonly EmailService _emailService;
+
+        private readonly IUsuarioRepository _usuarioRepository;
+        private readonly IMateriaRepository _materiaRepository;
+
+        public NotaController(INotaRepository notaRepository, EmailService emailService, IUsuarioRepository usuarioRepository, IMateriaRepository materiaRepository)
         {
             _notaRepository = notaRepository;
+            _emailService = emailService;
+            _usuarioRepository = usuarioRepository;
+            _materiaRepository = materiaRepository;
         }
+
+       
+      
 
         [HttpPost]
         [Route("/CreateNota")]
-        public IActionResult CreateNota(Nota nota)
+        public async Task<IActionResult> CreateNota(Nota nota)
         {
             try
             {
+                var usuario = _usuarioRepository.GetAlumno(nota.id_alumno);
+                var materia = _materiaRepository.GetMateria(nota.id_materia);
+
                 _notaRepository.CreateNota(nota);
-                return Ok(new { msg = "Nota creada con éxito" });
+                await _emailService.EnviarCorreoNotaActualizada(
+                   usuario.Correo,
+                   $"{usuario.Nombre} {usuario.Apellido}",
+                   materia.materia,
+                   nota.nota,
+                   DateTime.Now.ToString("dd/MM/yyyy"),
+                   nota.trimestre
+               );
+                return Ok(new { msg = "Nota creada con éxito y Alumno notificado por mail" });
             }
             catch
             {
@@ -33,12 +56,23 @@ namespace backendPFPU.Controllers
 
         [HttpPut]
         [Route("/UpdateNota")]
-        public IActionResult UpdateNota(Nota nota)
+        public async Task<IActionResult> UpdateNota(Nota nota)
         {
             try
             {
+                var usuario = _usuarioRepository.GetAlumno(nota.id_alumno);
+                var materia = _materiaRepository.GetMateria(nota.id_materia);
+
                 _notaRepository.UpdateNota(nota);
-                return Ok(new { msg = "Nota actualizada con éxito" });
+                await _emailService.EnviarCorreoNotaActualizada(
+                  usuario.Correo,
+                  $"{usuario.Nombre} {usuario.Apellido}",
+                  materia.materia,
+                  nota.nota,
+                  DateTime.Now.ToString("dd/MM/yyyy"),
+                    nota.trimestre
+              );
+                return Ok(new { msg = "Nota Actualizada con éxito y Alumno notificado por mail" });
             }
             catch
             {

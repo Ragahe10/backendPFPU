@@ -778,6 +778,16 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "backendPFPU.Controllers.DeudaController",
+    "Method": "NotificarAlumnosConDeudas",
+    "RelativePath": "NotificarVencimientos",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "backendPFPU.Controllers.UsuarioController",
     "Method": "PostAdministrador",
     "RelativePath": "PostAdministrador",

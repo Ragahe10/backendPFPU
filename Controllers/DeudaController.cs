@@ -1,5 +1,6 @@
 ﻿using backendPFPU.Models;
 using backendPFPU.Repositories;
+using backendPFPU.Respositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,10 +11,43 @@ namespace backendPFPU.Controllers
     public class DeudaController : ControllerBase
     {
         private readonly IDeudaRepository _deudaRepository;
+        private readonly IUsuarioRepository _usuarioRepository;
+        private readonly EmailService _emailService;
 
-        public DeudaController(IDeudaRepository deudaRepository)
+        public DeudaController(IDeudaRepository deudaRepository, IUsuarioRepository usuarioRepository, EmailService emailService)
         {
             _deudaRepository = deudaRepository;
+            _usuarioRepository = usuarioRepository;
+            _emailService = emailService;
+        }
+
+        [HttpPost("/NotificarVencimientos")]
+        public async Task<IActionResult> NotificarAlumnosConDeudas()
+        {
+            var deudasVencidas = _deudaRepository.ObtenerDeudasVencidas();
+
+            if (deudasVencidas == null || deudasVencidas.Count == 0)
+                return Ok("No hay alumnos con deudas vencidas.");
+
+            foreach (var deuda in deudasVencidas)
+            {
+                var alumno = new Alumno();
+                if (deuda.id_alumno != 0)
+                {
+                    alumno = _usuarioRepository.GetAlumno(deuda.id_alumno);
+                }
+                if (alumno.Id_usuario != 0)
+                {
+                    await _emailService.EnviarCorreoDeudaVencida(alumno.Correo, alumno.Nombre, deuda.monto, deuda.fecha_vencimiento);
+                }
+                else
+                {
+                    throw new System.Exception("No se encontró el alumno con la deuda.");
+                }
+            }
+
+            return Ok(new { mensaje = "Correos enviados exitosamente" });
+
         }
 
         [HttpPost]
