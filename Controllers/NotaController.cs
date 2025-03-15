@@ -144,5 +144,53 @@ namespace backendPFPU.Controllers
                 return BadRequest(new { msg = "No se encontraron notas para la materia" });
             }
         }
+
+        [HttpGet]
+        [Route("/GetPromedioByAlumno/{id_alumno}")]
+        public IActionResult GetPromedioByAlumno(int id_alumno)
+        {
+            try
+            {
+                var promedio = _notaRepository.GetPromedioByAlumno(id_alumno);
+                
+                return Ok(promedio);
+            }
+            catch
+            {
+                return BadRequest(new { msg = "No se pudo calcular el promedio" });
+            }
+        }
+
+        [HttpGet]
+        [Route("/GetPromedioByMateriaAlumno/{id_materia}/{id_alumno}")]
+        public IActionResult GetPromedioByMateriaAlumno(int id_materia, int id_alumno)
+        {
+            try
+            {
+                var promedio = _notaRepository.GetPromedioByMateriaAlumno(id_materia, id_alumno);
+                return Ok(promedio);
+            }
+            catch
+            {
+                return BadRequest(new { msg = "No se pudo calcular el promedio" });
+            }
+        }
+
+        [HttpGet]
+        [Route("/GetNotasByMateriaAlumno/{id_materia}/{id_alumno}")]
+        public IActionResult GetNotasByMateriaAlumno(int id_materia, int id_alumno)
+        {
+            try
+            {
+                var notas = _notaRepository.GetNotasByMateriaAlumno(id_materia, id_alumno);
+                return Ok(notas);
+            }
+            catch
+            {
+                return BadRequest(new { msg = "No se encontraron notas para la materia y el alumno" });
+            }
+        }
+
+     
     }
 }

@@ -11,5 +11,11 @@ namespace backendPFPU.Repositories
         List<Materia> GetMateriasByAnio(int id_anio);
 
         List<Materia> GetMateriasByDocente(int id_docente);
+
+        List<Materia> GetMateriasByAlumno(int id_alumno);   
+
+        int GetCantidadMateriasByAlumno(int id_alumno);
+
+  
     }
 }

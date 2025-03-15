@@ -12,5 +12,11 @@ namespace backendPFPU.Repositories
 
         List<Nota> GetNotasByAlumno(int id_alumno);
         List<Nota> GetNotasByMateria(int id_materia);
+
+        List<Nota> GetNotasByMateriaAlumno(int id_materia, int id_alumno);
+
+        float GetPromedioByAlumno(int id_alumno);
+
+        float GetPromedioByMateriaAlumno(int id_materia, int id_alumno);
     }
 }

@@ -210,5 +210,90 @@ namespace backendPFPU.Repositories
 
             }
         }
+
+        public float GetPromedioByAlumno(int id_alumno)
+        {
+            var query = "SELECT AVG(nota) FROM nota WHERE id_alumno = @id_alumno";
+            using (var connection = new SqliteConnection(_CadenaDeConexion))
+            {
+                connection.Open();
+                using (var command = new SqliteCommand(query, connection))
+                {
+                    command.Parameters.Add(new SqliteParameter("@id_alumno", DbType.Int32) { Value = id_alumno });
+                    using (var reader = command.ExecuteReader())
+                    {
+                       // manejo por si el alumno no tiene notas y devuelve null la bd
+                       while (reader.Read()) {
+                            if (reader.IsDBNull(0))
+                            {
+                                return 0;
+                            }
+                        }
+                        if (reader.Read())
+                        {
+                            return reader.GetFloat(0);
+                        }
+                        else
+                        {
+                            throw new Exception("No se encontró un registro con ese ID.");
+                        }
+                    }
+                }
+            }
+        }
+
+        public float GetPromedioByMateriaAlumno(int id_materia, int id_alumno)
+        {
+            var query = "SELECT AVG(nota) FROM nota WHERE id_materia = @id_materia AND id_alumno = @id_alumno";
+
+            using (var connection = new SqliteConnection(_CadenaDeConexion))
+            {
+                connection.Open();
+                using (var command = new SqliteCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@id_materia", id_materia);
+                    command.Parameters.AddWithValue("@id_alumno", id_alumno);
+
+                    var result = command.ExecuteScalar();
+
+                    // Si no hay registros, AVG devuelve NULL, así que evitamos errores de conversión
+                    return result == DBNull.Value || result == null ? 0 : Convert.ToSingle(result);
+                }
+            }
+        }
+
+
+        public List<Nota> GetNotasByMateriaAlumno(int id_materia, int id_alumno)
+        {
+            var query = "SELECT * FROM nota WHERE id_materia = @id_materia AND id_alumno = @id_alumno";
+            var notas = new List<Nota>();
+            using (var connection = new SqliteConnection(_CadenaDeConexion))
+            {
+                connection.Open();
+                using (var command = new SqliteCommand(query, connection))
+                {
+                    command.Parameters.Add(new SqliteParameter("@id_materia", DbType.Int32) { Value = id_materia });
+                    command.Parameters.Add(new SqliteParameter("@id_alumno", DbType.Int32) { Value = id_alumno });
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            var nota = new Nota
+                            {
+                                id_nota = reader.GetInt32(0),
+                                id_alumno = reader.GetInt32(1),
+                                id_materia = reader.GetInt32(2),
+                                fecha = reader.GetString(6),
+                                nota = reader.GetInt32(3),
+                                descripcion = reader.GetString(4),
+                                trimestre = reader.GetInt32(5)
+                            };
+                            notas.Add(nota);
+                        }
+                    }
+                }
+            }
+            return notas;
+        }
     }
 }

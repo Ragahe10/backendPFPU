@@ -131,5 +131,99 @@ namespace backendPFPU.Repositories
                 connection.Close();
             }
         }
+
+        public int GetPorcentajeAsistenciasByAlumno(int id_alumno)
+        {
+            var query = "SELECT COUNT(*) FROM asistencia WHERE id_alumno = @id_alumno AND estado = 'P'";
+            using (var connection = new SqliteConnection(_CadenaDeConexion))
+            {
+                connection.Open();
+                using (var command = new SqliteCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@id_alumno", id_alumno);
+                    int asistencias = Convert.ToInt32(command.ExecuteScalar());
+                    query = "SELECT COUNT(*) FROM asistencia WHERE id_alumno = @id_alumno";
+                    command.CommandText = query;
+                    int total = Convert.ToInt32(command.ExecuteScalar());
+                    connection.Close();
+                    if (total == 0)
+                    {
+                        return 0;
+                    }
+                    return (asistencias * 100) / total;
+                }
+            }
+        }
+
+        public int GetPorcentajeAsistenciasByMateriaAlumno(int id_materia, int id_alumno)
+        {
+            var queryAsistencias = "SELECT COUNT(*) FROM asistencia WHERE id_materia = @id_materia AND id_alumno = @id_alumno AND (estado = 'P' OR estado = 'T')";
+            var queryTotal = "SELECT COUNT(*) FROM asistencia WHERE id_materia = @id_materia AND id_alumno = @id_alumno";
+
+            using (var connection = new SqliteConnection(_CadenaDeConexion))
+            {
+                connection.Open();
+                using (var command = new SqliteCommand(queryAsistencias, connection))
+                {
+                    command.Parameters.AddWithValue("@id_materia", id_materia);
+                    command.Parameters.AddWithValue("@id_alumno", id_alumno);
+                    int asistencias = Convert.ToInt32(command.ExecuteScalar());
+
+                    command.CommandText = queryTotal;
+                    command.Parameters.Clear();
+                    command.Parameters.AddWithValue("@id_materia", id_materia);
+                    command.Parameters.AddWithValue("@id_alumno", id_alumno);
+                    int total = Convert.ToInt32(command.ExecuteScalar());
+
+                    return total == 0 ? 0 : (asistencias * 100) / total;
+                }
+            }
+        }
+
+        public int GetPresentesByMateriaAlumno(int id_materia, int id_alumno)
+        {
+            var query = "SELECT COUNT(*) FROM asistencia WHERE id_materia = @id_materia AND id_alumno = @id_alumno AND estado = 'P'";
+            using (var connection = new SqliteConnection(_CadenaDeConexion))
+            {
+                connection.Open();
+                using (var command = new SqliteCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@id_materia", id_materia);
+                    command.Parameters.AddWithValue("@id_alumno", id_alumno);
+                    return Convert.ToInt32(command.ExecuteScalar());
+                }
+            }
+        }
+
+        public int GetAusentesByMateriaAlumno(int id_materia, int id_alumno)
+        {
+            var query = "SELECT COUNT(*) FROM asistencia WHERE id_materia = @id_materia AND id_alumno = @id_alumno AND estado = 'A'";
+            using (var connection = new SqliteConnection(_CadenaDeConexion))
+            {
+                connection.Open();
+                using (var command = new SqliteCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@id_materia", id_materia);
+                    command.Parameters.AddWithValue("@id_alumno", id_alumno);
+                    return Convert.ToInt32(command.ExecuteScalar());
+                }
+            }
+        }
+
+        public int GetTardesByMateriaAlumno(int id_materia, int id_alumno)
+        {
+            var query = "SELECT COUNT(*) FROM asistencia WHERE id_materia = @id_materia AND id_alumno = @id_alumno AND estado = 'T'";
+            using (var connection = new SqliteConnection(_CadenaDeConexion))
+            {
+                connection.Open();
+                using (var command = new SqliteCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@id_materia", id_materia);
+                    command.Parameters.AddWithValue("@id_alumno", id_alumno);
+                    return Convert.ToInt32(command.ExecuteScalar());
+                }
+            }
+        }
+
     }
 }

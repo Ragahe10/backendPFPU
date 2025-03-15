@@ -478,6 +478,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "backendPFPU.Controllers.AnioController",
+    "Method": "GetAnioByAlumno",
+    "RelativePath": "GetAnioByAlumno/{id_alumno}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id_alumno",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "backendPFPU.Controllers.AsistenciaController",
     "Method": "GetAsistencia",
     "RelativePath": "GetAsistencia/{id_asistencia}/{id_alumno}/{id_materia}/{fecha}",
@@ -503,6 +519,43 @@
       {
         "Name": "fecha",
         "Type": "System.String",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "backendPFPU.Controllers.AsistenciaController",
+    "Method": "GetAusentesByMateriaAlumno",
+    "RelativePath": "GetAusentesByMateriaAlumno/{id_materia}/{id_alumno}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id_materia",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "id_alumno",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "backendPFPU.Controllers.MateriaController",
+    "Method": "GetCantidadMateriasByAlumno",
+    "RelativePath": "GetCantidadMateriasByAlumno/{id_alumno}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id_alumno",
+        "Type": "System.Int32",
         "IsRequired": true
       }
     ],
@@ -606,6 +659,22 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "backendPFPU.Controllers.MateriaController",
+    "Method": "GetMateriasByAlumno",
+    "RelativePath": "GetMateriasByAlumno",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id_alumno",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
     "ReturnTypes": []
   },
   {
@@ -714,6 +783,27 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "backendPFPU.Controllers.NotaController",
+    "Method": "GetNotasByMateriaAlumno",
+    "RelativePath": "GetNotasByMateriaAlumno/{id_materia}/{id_alumno}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id_materia",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "id_alumno",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "backendPFPU.Controllers.PagoController",
     "Method": "GetPago",
     "RelativePath": "GetPago/{id}",
@@ -739,6 +829,122 @@
     "Parameters": [
       {
         "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "backendPFPU.Controllers.AsistenciaController",
+    "Method": "GetPorcentajeAsistenciasByAlumno",
+    "RelativePath": "GetPorcentajeAsistenciasByAlumno/{id_alumno}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id_alumno",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "backendPFPU.Controllers.AsistenciaController",
+    "Method": "GetPorcentajeAsistenciasByMateriaAlumno",
+    "RelativePath": "GetPorcentajeAsistenciasByMateriaAlumno/{id_materia}/{id_alumno}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id_materia",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "id_alumno",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "backendPFPU.Controllers.AsistenciaController",
+    "Method": "GetPresentesByMateriaAlumno",
+    "RelativePath": "GetPresentesByMateriaAlumno/{id_materia}/{id_alumno}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id_materia",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "id_alumno",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "backendPFPU.Controllers.NotaController",
+    "Method": "GetPromedioByAlumno",
+    "RelativePath": "GetPromedioByAlumno/{id_alumno}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id_alumno",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "backendPFPU.Controllers.NotaController",
+    "Method": "GetPromedioByMateriaAlumno",
+    "RelativePath": "GetPromedioByMateriaAlumno/{id_materia}/{id_alumno}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id_materia",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "id_alumno",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "backendPFPU.Controllers.AsistenciaController",
+    "Method": "GetTardesByMateriaAlumno",
+    "RelativePath": "GetTardesByMateriaAlumno/{id_materia}/{id_alumno}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id_materia",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "id_alumno",
         "Type": "System.Int32",
         "IsRequired": true
       }

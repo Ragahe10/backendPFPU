@@ -80,5 +80,21 @@ public class AnioController : ControllerBase
         });
     }
 
+    [HttpGet]
+    [Route("/GetAnioByAlumno/{id_alumno}")]
+    public IActionResult GetAnioByAlumno(int id_alumno)
+    {
+        var anio = _anioRepository.GetAnioByAlumno(id_alumno);
+        if (anio == null)
+        {
+            return NotFound(new { msg = "No se encontró el año." });
+        }
+        return Ok(new
+        {
+            msg = anio
+            
+        });
+    }
+
 
 }

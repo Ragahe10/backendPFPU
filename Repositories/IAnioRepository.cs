@@ -9,5 +9,7 @@ namespace backendPFPU.Repositories
         void PostAnio(Anio anio);
         void PutAnio(Anio anio);
         void DeleteAnio(int id);
+
+        string GetAnioByAlumno(int id_alumno);
     }
 }

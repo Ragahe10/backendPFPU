@@ -196,5 +196,55 @@ namespace backendPFPU.Repositories
             return materias;
         }
 
+        public List<Materia> GetMateriasByAlumno(int id_alumno)
+        {
+            var query = "SELECT * FROM materia INNER JOIN anio USING(id_anio) INNER JOIN curso USING(id_anio) INNER JOIN alumno USING(id_curso) WHERE id_alumno = @id_alumno";
+            var materias = new List<Materia>();
+            using (var connection = new SqliteConnection(_CadenaDeConexion))
+            {
+                connection.Open();
+                using (var command = new SqliteCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@id_alumno", id_alumno);
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            var materia = new Materia
+                            {
+                                Id_materia = reader.GetInt32(reader.GetOrdinal("id_materia")),
+                                materia = reader.GetString(reader.GetOrdinal("materia")),
+                                Id_anio = reader.GetInt32(reader.GetOrdinal("id_anio")),
+                            };
+                            materias.Add(materia);
+                        }
+                    }
+                }
+                connection.Close();
+            }
+            return materias;
+        }
+
+        public int GetCantidadMateriasByAlumno(int id_alumno)
+        {
+            var query = "SELECT COUNT(*) FROM materia INNER JOIN anio USING(id_anio) INNER JOIN curso USING(id_anio) INNER JOIN alumno USING(id_curso) WHERE id_alumno = @id_alumno";
+            int cantidad = 0;
+            using (var connection = new SqliteConnection(_CadenaDeConexion))
+            {
+                connection.Open();
+                using (var command = new SqliteCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@id_alumno", id_alumno);
+                    cantidad = Convert.ToInt32(command.ExecuteScalar());
+                }
+                connection.Close();
+            }
+            return cantidad;
+        }
+
+     
+
+
+
     }
 }

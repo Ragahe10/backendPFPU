@@ -125,6 +125,29 @@
         }
       }
     },
+    "/GetAnioByAlumno/{id_alumno}": {
+      "get": {
+        "tags": [
+          "Anio"
+        ],
+        "parameters": [
+          {
+            "name": "id_alumno",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/CreateAsistencia": {
       "post": {
         "tags": [
@@ -289,6 +312,157 @@
       "get": {
         "tags": [
           "Asistencia"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/GetPorcentajeAsistenciasByAlumno/{id_alumno}": {
+      "get": {
+        "tags": [
+          "Asistencia"
+        ],
+        "parameters": [
+          {
+            "name": "id_alumno",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/GetPorcentajeAsistenciasByMateriaAlumno/{id_materia}/{id_alumno}": {
+      "get": {
+        "tags": [
+          "Asistencia"
+        ],
+        "parameters": [
+          {
+            "name": "id_materia",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "id_alumno",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/GetPresentesByMateriaAlumno/{id_materia}/{id_alumno}": {
+      "get": {
+        "tags": [
+          "Asistencia"
+        ],
+        "parameters": [
+          {
+            "name": "id_materia",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "id_alumno",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/GetAusentesByMateriaAlumno/{id_materia}/{id_alumno}": {
+      "get": {
+        "tags": [
+          "Asistencia"
+        ],
+        "parameters": [
+          {
+            "name": "id_materia",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "id_alumno",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/GetTardesByMateriaAlumno/{id_materia}/{id_alumno}": {
+      "get": {
+        "tags": [
+          "Asistencia"
+        ],
+        "parameters": [
+          {
+            "name": "id_materia",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "id_alumno",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
         ],
         "responses": {
           "200": {
@@ -797,6 +971,51 @@
         }
       }
     },
+    "/GetMateriasByAlumno": {
+      "get": {
+        "tags": [
+          "Materia"
+        ],
+        "parameters": [
+          {
+            "name": "id_alumno",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/GetCantidadMateriasByAlumno/{id_alumno}": {
+      "get": {
+        "tags": [
+          "Materia"
+        ],
+        "parameters": [
+          {
+            "name": "id_alumno",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/CreateNota": {
       "post": {
         "tags": [
@@ -1000,6 +1219,93 @@
         "parameters": [
           {
             "name": "id_materia",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/GetPromedioByAlumno/{id_alumno}": {
+      "get": {
+        "tags": [
+          "Nota"
+        ],
+        "parameters": [
+          {
+            "name": "id_alumno",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/GetPromedioByMateriaAlumno/{id_materia}/{id_alumno}": {
+      "get": {
+        "tags": [
+          "Nota"
+        ],
+        "parameters": [
+          {
+            "name": "id_materia",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "id_alumno",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/GetNotasByMateriaAlumno/{id_materia}/{id_alumno}": {
+      "get": {
+        "tags": [
+          "Nota"
+        ],
+        "parameters": [
+          {
+            "name": "id_materia",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "id_alumno",
             "in": "path",
             "required": true,
             "schema": {

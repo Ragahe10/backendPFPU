@@ -115,7 +115,29 @@ namespace backendPFPU.Repositories
             }
         }
 
-     
+        string IAnioRepository.GetAnioByAlumno(int id_alumno)
+        {
+            string anio = "";
+            using (var connection = new SqliteConnection(_CadenaDeConexion))
+            {
+                connection.Open();
+                var query = "SELECT CONCAT(anio, ' ' , division) FROM anio INNER JOIN curso USING(id_anio) INNER JOIN alumno USING(id_curso) WHERE id_alumno = @id_alumno";
+                using (var command = new SqliteCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@id_alumno", id_alumno);
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            anio = reader.GetString(0);
+                        }
+                    }
+                }
+                connection.Close();
+            }
+            return anio;
+        }
+
 
     }
 }

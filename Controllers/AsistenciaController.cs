@@ -90,5 +90,80 @@ namespace backendPFPU.Controllers
                 return BadRequest(new { msg = "No se pudieron obtener las asistencias" });
             }
         }
+
+        [HttpGet]
+        [Route("/GetPorcentajeAsistenciasByAlumno/{id_alumno}")]
+        public IActionResult GetPorcentajeAsistenciasByAlumno(int id_alumno)
+        {
+            try
+            {
+                var porcentaje = _asistenciaRepository.GetPorcentajeAsistenciasByAlumno(id_alumno);
+                return Ok(porcentaje);
+            }
+            catch
+            {
+                return BadRequest(new { msg = "No se pudo obtener el porcentaje de asistencias" });
+            }
+        }
+
+        [HttpGet]
+        [Route("/GetPorcentajeAsistenciasByMateriaAlumno/{id_materia}/{id_alumno}")]
+        public IActionResult GetPorcentajeAsistenciasByMateriaAlumno(int id_materia, int id_alumno)
+        {
+            try
+            {
+                var porcentaje = _asistenciaRepository.GetPorcentajeAsistenciasByMateriaAlumno(id_materia, id_alumno);
+                return Ok(porcentaje);
+            }
+            catch
+            {
+                return BadRequest(new { msg = "No se pudo obtener el porcentaje de asistencias" });
+            }
+        }
+
+        [HttpGet]
+        [Route("/GetPresentesByMateriaAlumno/{id_materia}/{id_alumno}")]
+        public IActionResult GetPresentesByMateriaAlumno(int id_materia, int id_alumno)
+        {
+            try
+            {
+                var presentes = _asistenciaRepository.GetPresentesByMateriaAlumno(id_materia, id_alumno);
+                return Ok(presentes);
+            }
+            catch
+            {
+                return BadRequest(new { msg = "No se pudo obtener la cantidad de presentes" });
+            }
+        }
+
+        [HttpGet]
+        [Route("/GetAusentesByMateriaAlumno/{id_materia}/{id_alumno}")]
+        public IActionResult GetAusentesByMateriaAlumno(int id_materia, int id_alumno)
+        {
+            try
+            {
+                var ausentes = _asistenciaRepository.GetAusentesByMateriaAlumno(id_materia, id_alumno);
+                return Ok(ausentes);
+            }
+            catch
+            {
+                return BadRequest(new { msg = "No se pudo obtener la cantidad de ausentes" });
+            }
+        }
+
+        [HttpGet]
+        [Route("/GetTardesByMateriaAlumno/{id_materia}/{id_alumno}")]
+        public IActionResult GetTardesByMateriaAlumno(int id_materia, int id_alumno)
+        {
+            try
+            {
+                var tardes = _asistenciaRepository.GetTardesByMateriaAlumno(id_materia, id_alumno);
+                return Ok(tardes);
+            }
+            catch
+            {
+                return BadRequest(new { msg = "No se pudo obtener la cantidad de tardes" });
+            }
+        }
     }
 }
