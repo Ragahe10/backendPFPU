@@ -214,33 +214,22 @@ namespace backendPFPU.Repositories
         public float GetPromedioByAlumno(int id_alumno)
         {
             var query = "SELECT AVG(nota) FROM nota WHERE id_alumno = @id_alumno";
+
             using (var connection = new SqliteConnection(_CadenaDeConexion))
             {
                 connection.Open();
                 using (var command = new SqliteCommand(query, connection))
                 {
-                    command.Parameters.Add(new SqliteParameter("@id_alumno", DbType.Int32) { Value = id_alumno });
-                    using (var reader = command.ExecuteReader())
-                    {
-                       // manejo por si el alumno no tiene notas y devuelve null la bd
-                       while (reader.Read()) {
-                            if (reader.IsDBNull(0))
-                            {
-                                return 0;
-                            }
-                        }
-                        if (reader.Read())
-                        {
-                            return reader.GetFloat(0);
-                        }
-                        else
-                        {
-                            throw new Exception("No se encontró un registro con ese ID.");
-                        }
-                    }
+                    command.Parameters.AddWithValue("@id_alumno", id_alumno);
+
+                    var result = command.ExecuteScalar();
+
+                    // Manejo seguro de null y DBNull
+                    return result == DBNull.Value || result == null ? 0 : Convert.ToSingle(result);
                 }
             }
         }
+
 
         public float GetPromedioByMateriaAlumno(int id_materia, int id_alumno)
         {

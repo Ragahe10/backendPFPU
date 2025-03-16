@@ -155,7 +155,9 @@ namespace backendPFPU.Repositories
                                 Id_materia = reader.GetInt32(reader.GetOrdinal("id_materia")),
                                 materia = reader.GetString(reader.GetOrdinal("materia")),
                                 Id_anio = reader.GetInt32(reader.GetOrdinal("id_anio")),
-          
+                                Id_docente = reader.IsDBNull(reader.GetOrdinal("id_docente")) ? (int?)null : reader.GetInt32(reader.GetOrdinal("id_docente"))
+
+
                             };
                             materias.Add(materia);
                         }
@@ -215,6 +217,7 @@ namespace backendPFPU.Repositories
                                 Id_materia = reader.GetInt32(reader.GetOrdinal("id_materia")),
                                 materia = reader.GetString(reader.GetOrdinal("materia")),
                                 Id_anio = reader.GetInt32(reader.GetOrdinal("id_anio")),
+                                Id_docente = reader.IsDBNull(reader.GetOrdinal("id_docente")) ? (int?)null : reader.GetInt32(reader.GetOrdinal("id_docente"))
                             };
                             materias.Add(materia);
                         }
