@@ -931,6 +931,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "backendPFPU.Controllers.DeudaController",
+    "Method": "GetResumenDeudaAlumno",
+    "RelativePath": "GetResumenDeudaAlumno/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "backendPFPU.Controllers.AsistenciaController",
     "Method": "GetTardesByMateriaAlumno",
     "RelativePath": "GetTardesByMateriaAlumno/{id_materia}/{id_alumno}",

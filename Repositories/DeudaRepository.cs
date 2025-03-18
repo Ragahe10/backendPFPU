@@ -185,5 +185,65 @@ namespace backendPFPU.Repositories
             }
             return deudas;
         }
+
+        public Deuda GetResumenDeudaByAlumno(int id)
+        {
+            var query = @"
+        WITH deuda_vencida AS (
+            SELECT fecha_vencimiento, 'Vencido' AS estado
+            FROM deuda
+            WHERE id_alumno = @id AND fecha_vencimiento < DATE('now') AND monto > 0
+            ORDER BY fecha_vencimiento ASC
+            LIMIT 1
+        ),
+        deuda_no_vencida AS (
+            SELECT fecha_vencimiento, 'Pendiente' AS estado
+            FROM deuda
+            WHERE id_alumno = @id AND fecha_vencimiento >= DATE('now') AND monto > 0
+            ORDER BY fecha_vencimiento ASC
+            LIMIT 1
+        )
+        SELECT 
+            COALESCE(SUM(monto), 0) AS total_deuda,
+            CASE 
+                WHEN EXISTS (SELECT 1 FROM deuda_vencida) THEN (SELECT fecha_vencimiento FROM deuda_vencida)
+                ELSE (SELECT fecha_vencimiento FROM deuda_no_vencida)
+            END AS fecha_vencimiento,
+            CASE 
+                WHEN EXISTS (SELECT 1 FROM deuda_vencida) THEN 'Vencido'
+                WHEN EXISTS (SELECT 1 FROM deuda_no_vencida) THEN 'Pendiente'
+                ELSE 'Sin Deuda'
+            END AS estado
+        FROM deuda
+        WHERE id_alumno = @id AND monto > 0";
+
+            using (var connection = new SqliteConnection(_CadenaDeConexion))
+            {
+                connection.Open();
+                using (var command = new SqliteCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@id", id);
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            return new Deuda
+                            {
+                                id_deuda = id,
+                                monto = reader.IsDBNull(0) ? 0 : reader.GetFloat(0),
+                                fecha_vencimiento = reader.IsDBNull(1) ? null : reader.GetString(1),
+                                estado = reader.IsDBNull(2) ? "Sin Deuda" : reader.GetString(2)
+                            };
+                        }
+                    }
+                }
+            }
+
+            return null; // No hay deudas registradas
+        }
+
+
+
     }
 }

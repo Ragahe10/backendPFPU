@@ -13,5 +13,6 @@ namespace backendPFPU.Repositories
         public List<Deuda> GetDeudasByAlumno(int id);
         public List<Deuda> ObtenerDeudasVencidas();
 
+        public Deuda GetResumenDeudaByAlumno(int id);
     }
 }

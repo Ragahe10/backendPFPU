@@ -177,5 +177,28 @@ namespace backendPFPU.Controllers
                 });
             }
         }
+
+        [HttpGet]
+        [Route("/GetResumenDeudaAlumno/{id}")]
+        public IActionResult GetResumenDeudaAlumno(int id)
+        {
+            try
+            {
+                var deuda = _deudaRepository.GetResumenDeudaByAlumno(id);
+                if (deuda.id_deuda == 0)
+                {
+                    return NotFound(new { msg = "No se encontró la deuda." });
+                }
+                return Ok(deuda);
+            }
+            catch (System.Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new
+                {
+                    msg = "Ocurrió un error al obtener la deuda",
+                    error = ex.Message
+                });
+            }
+        }
     }
 }
