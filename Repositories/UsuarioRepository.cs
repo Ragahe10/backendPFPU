@@ -560,6 +560,7 @@ public class UsuarioRepository : IUsuarioRepository
                 profesor.Nombre = reader.GetString(4);
                 profesor.Apellido = reader.GetString(5);
                 profesor.Tipo = reader.GetString(6);
+                profesor.Activo = reader.GetInt32(7);
                 profesor.Telefono = reader.GetString(8);
                 profesores.Add(profesor);
             }
@@ -571,7 +572,7 @@ public class UsuarioRepository : IUsuarioRepository
     public List<Alumno> GetAlumnos()
     {
         var alumnos = new List<Alumno>();
-        var alumnoQuery = "SELECT id_usuario, dni, correo, nombre, apellido, direccion, matricula, fecha_nac, telefono, id_curso FROM usuario INNER JOIN alumno ON usuario.id_usuario = alumno.id_alumno;";
+        var alumnoQuery = "SELECT id_usuario, dni, correo, nombre, apellido, direccion, matricula, fecha_nac, telefono, id_curso, activo FROM usuario INNER JOIN alumno ON usuario.id_usuario = alumno.id_alumno;";
         using (SqliteConnection connection = new SqliteConnection(_CadenaDeConexion))
         {
             connection.Open();
@@ -590,6 +591,7 @@ public class UsuarioRepository : IUsuarioRepository
                 alumno.Fecha_nac = reader.GetDateTime(7);
                 alumno.Telefono = reader.GetString(8);
                 alumno.Id_curso = reader.GetInt32(9);
+                alumno.Activo = reader.GetInt32(10);
 
                 alumnos.Add(alumno);
             }
@@ -616,6 +618,7 @@ public class UsuarioRepository : IUsuarioRepository
                 administrador.Nombre = reader.GetString(4);
                 administrador.Apellido = reader.GetString(5);
                 administrador.Tipo = reader.GetString(6);
+                administrador.Activo = reader.GetInt32(7);
                 administrador.Telefono = reader.GetString(8);
                 administradores.Add(administrador);
             }
@@ -696,6 +699,60 @@ public class UsuarioRepository : IUsuarioRepository
                         usuarioCommand.Parameters.AddWithValue("@telefono", usuario.Telefono);
                         usuarioCommand.Parameters.AddWithValue("@id_usuario", usuario.Id_usuario);
                         usuarioCommand.ExecuteNonQuery();
+                    }
+                    transaction.Commit();
+                }
+                catch
+                {
+                    transaction.Rollback();
+                    throw;
+                }
+            }
+            connection.Close();
+        }
+    }
+
+    public void DesactivarUsuario(int id_usuario)
+    {
+        var query = "UPDATE usuario SET activo = 0 WHERE id_usuario = @id_usuario";
+        using (var connection = new SqliteConnection(_CadenaDeConexion))
+        {
+            connection.Open();
+            using (var transaction = connection.BeginTransaction())
+            {
+                try
+                {
+                    using (var command = new SqliteCommand(query, connection, transaction))
+                    {
+                        command.Parameters.AddWithValue("@id_usuario", id_usuario);
+                        command.ExecuteNonQuery();
+                    }
+                    transaction.Commit();
+                }
+                catch
+                {
+                    transaction.Rollback();
+                    throw;
+                }
+            }
+            connection.Close();
+        }
+    }
+
+    public void ActivarUsuario(int id_usuario)
+    {
+        var query = "UPDATE usuario SET activo = 1 WHERE id_usuario = @id_usuario";
+        using (var connection = new SqliteConnection(_CadenaDeConexion))
+        {
+            connection.Open();
+            using (var transaction = connection.BeginTransaction())
+            {
+                try
+                {
+                    using (var command = new SqliteCommand(query, connection, transaction))
+                    {
+                        command.Parameters.AddWithValue("@id_usuario", id_usuario);
+                        command.ExecuteNonQuery();
                     }
                     transaction.Commit();
                 }

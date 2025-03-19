@@ -254,4 +254,36 @@ public class UsuarioController : ControllerBase
         });
     }
 
+    [HttpPut]
+    [Route("/DesactivarUsuario")]
+    public IActionResult DesactivarUsuario(int id_usuario)
+    {
+        var usuario = _usuarioRepository.GetUsuario(id_usuario);
+        if (usuario.Id_usuario == 0)
+        {
+            return BadRequest(new { msg = "El id proporcionado es inválido." });
+        }
+        _usuarioRepository.DesactivarUsuario(id_usuario);
+        return Ok(new
+        {
+            msg = "El usuario se desactivó con éxito",
+        });
+    }
+
+    [HttpPut]
+    [Route("/ActivarUsuario")]
+    public IActionResult ActivarUsuario(int id_usuario)
+    {
+        var usuario = _usuarioRepository.GetUsuario(id_usuario);
+        if (usuario.Id_usuario == 0)
+        {
+            return BadRequest(new { msg = "El id proporcionado es inválido." });
+        }
+        _usuarioRepository.ActivarUsuario(id_usuario);
+        return Ok(new
+        {
+            msg = "El usuario se activó con éxito",
+        });
+    }
+
 }

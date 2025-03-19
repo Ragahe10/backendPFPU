@@ -30,4 +30,7 @@ public interface IUsuarioRepository{
     public Usuario GetDocente(int id_usuario);
     public void UpdateUsuario(Usuario usuario);
     public void DeleteUsuario(int id_usuario);
+
+    public void DesactivarUsuario(int id_usuario);
+    public void ActivarUsuario(int id_usuario);
 }
