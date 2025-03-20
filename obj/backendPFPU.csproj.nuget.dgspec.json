@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\educacion\\OneDrive\\Escritorio\\ramiro\\ProyectoPU\\backendPFPU\\backendPFPU.csproj": {}
+    "C:\\Users\\Ramiro\\Desktop\\ramiro\\ProyectoPU\\backendPFPU\\backendPFPU.csproj": {}
   },
   "projects": {
-    "C:\\Users\\educacion\\OneDrive\\Escritorio\\ramiro\\ProyectoPU\\backendPFPU\\backendPFPU.csproj": {
+    "C:\\Users\\Ramiro\\Desktop\\ramiro\\ProyectoPU\\backendPFPU\\backendPFPU.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\educacion\\OneDrive\\Escritorio\\ramiro\\ProyectoPU\\backendPFPU\\backendPFPU.csproj",
+        "projectUniqueName": "C:\\Users\\Ramiro\\Desktop\\ramiro\\ProyectoPU\\backendPFPU\\backendPFPU.csproj",
         "projectName": "backendPFPU",
-        "projectPath": "C:\\Users\\educacion\\OneDrive\\Escritorio\\ramiro\\ProyectoPU\\backendPFPU\\backendPFPU.csproj",
-        "packagesPath": "C:\\Users\\educacion\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\educacion\\OneDrive\\Escritorio\\ramiro\\ProyectoPU\\backendPFPU\\obj\\",
+        "projectPath": "C:\\Users\\Ramiro\\Desktop\\ramiro\\ProyectoPU\\backendPFPU\\backendPFPU.csproj",
+        "packagesPath": "C:\\Users\\Ramiro\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Ramiro\\Desktop\\ramiro\\ProyectoPU\\backendPFPU\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\educacion\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\Ramiro\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net9.0"
@@ -38,7 +38,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.100"
+        "SdkAnalysisLevel": "9.0.200"
       },
       "frameworks": {
         "net9.0": {
@@ -84,7 +84,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
