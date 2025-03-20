@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("backendPFPU")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0c688d11435d23e0c24a6db43fc7464ad7d87d9a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+94d8a4e9aab003fa96783f73396e5ccefc03594b")]
 [assembly: System.Reflection.AssemblyProductAttribute("backendPFPU")]
 [assembly: System.Reflection.AssemblyTitleAttribute("backendPFPU")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

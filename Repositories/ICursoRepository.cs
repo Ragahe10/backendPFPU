@@ -9,5 +9,7 @@ namespace backendPFPU.Repositories
         void AddCurso(Curso curso);
         void UpdateCurso(Curso curso);
         void DeleteCurso(int id);
+
+        void DismunirCupo(int id);
     }
 }

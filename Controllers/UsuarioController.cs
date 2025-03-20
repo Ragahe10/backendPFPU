@@ -1,4 +1,5 @@
 using backendPFPU.Models;
+using backendPFPU.Repositories;
 using backendPFPU.Respositories;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.VisualBasic;
@@ -11,12 +12,14 @@ public class UsuarioController : ControllerBase
 {
     private readonly ILogger<UsuarioController> _logger;
     private IUsuarioRepository _usuarioRepository;
+    private readonly ICursoRepository _cursoRepository;
     private readonly EmailService _emailService;
 
-    public UsuarioController(ILogger<UsuarioController> logger, IUsuarioRepository usuarioRepository, EmailService emailService)
+    public UsuarioController(ILogger<UsuarioController> logger, IUsuarioRepository usuarioRepository, ICursoRepository cursoRepository, EmailService emailService)
     {
         _logger = logger;
         _usuarioRepository = usuarioRepository;
+        _cursoRepository = cursoRepository;
         _emailService = emailService;
     }
 
@@ -58,7 +61,18 @@ public class UsuarioController : ControllerBase
         {
             return BadRequest(new { msg = "El Alumno proporcionado es inválido." });
         }
-        // Guardar el usuario utilizando el repositorio
+
+        // Disminuir el cupo del curso
+        var curso = _cursoRepository.GetCurso(usuario.Id_curso);
+        if (curso == null || curso.cupo_restante <= 0)
+        {
+            return BadRequest(new { msg = "No hay cupo disponible en el curso seleccionado." });
+        }
+
+        curso.cupo_restante--;
+        _cursoRepository.UpdateCurso(curso);
+
+        // Guardar el usuario
         _usuarioRepository.PostAlumno(usuario);
         await _emailService.EnviarCorreoBienvenida(usuario.Correo, usuario.Nombre, usuario.Dni, usuario.Contrasenia);
 
@@ -169,12 +183,38 @@ public class UsuarioController : ControllerBase
         {
             return BadRequest(new { msg = "El usuario proporcionado es inválido." });
         }
-        _usuarioRepository.PutAlumno(usuario);
-        return Ok(new
+
+        var alumnoActual = _usuarioRepository.GetAlumno(usuario.Id_usuario);
+        if (alumnoActual == null)
         {
-            msg = "El usuario se actualizó con éxito",
-        });
+            return NotFound(new { msg = "El alumno no existe." });
+        }
+
+        // Verificar si el curso ha cambiado
+        if (alumnoActual.Id_curso != usuario.Id_curso)
+        {
+            var cursoNuevo = _cursoRepository.GetCurso(usuario.Id_curso);
+            if (cursoNuevo == null || cursoNuevo.cupo_restante <= 0)
+            {
+                return BadRequest(new { msg = "No hay cupo disponible en el nuevo curso seleccionado." });
+            }
+
+            // Ahora que estamos seguros de que el nuevo curso tiene cupo, procedemos con la actualización
+            var cursoAnterior = _cursoRepository.GetCurso(alumnoActual.Id_curso);
+            if (cursoAnterior != null)
+            {
+                cursoAnterior.cupo_restante++; // Liberar cupo del curso anterior
+                _cursoRepository.UpdateCurso(cursoAnterior);
+            }
+
+            cursoNuevo.cupo_restante--; // Reducir cupo del nuevo curso
+            _cursoRepository.UpdateCurso(cursoNuevo);
+        }
+
+        _usuarioRepository.PutAlumno(usuario);
+        return Ok(new { msg = "El usuario se actualizó con éxito" });
     }
+
 
     [HttpPut]
     [Route("/UpdateDocente")]
@@ -210,16 +250,22 @@ public class UsuarioController : ControllerBase
     [Route("/DeleteAlumno")]
     public IActionResult DeleteUsuario(int id_usuario)
     {
-        var usuario = _usuarioRepository.GetUsuario(id_usuario);
-        if (usuario.Id_usuario == 0)
+        Alumno usuario = _usuarioRepository.GetAlumno(id_usuario);
+        if (usuario == null)
         {
-            return BadRequest(new { msg = "El id proporcionado es inválido." });
+            return NotFound(new { msg = "El alumno no existe." });
         }
-        _usuarioRepository.DeleteAlumno(id_usuario);
-        return Ok(new
+
+        // Incrementar el cupo del curso
+        var curso = _cursoRepository.GetCurso(usuario.Id_curso);
+        if (curso != null)
         {
-            msg = "El alumno se eliminó con éxito",
-        });
+            curso.cupo_restante++;
+            _cursoRepository.UpdateCurso(curso);
+        }
+
+        _usuarioRepository.DeleteAlumno(id_usuario);
+        return Ok(new { msg = "El alumno se eliminó con éxito" });
     }
 
     [HttpDelete]

@@ -119,5 +119,23 @@ namespace backendPFPU.Repositories
                 }
             }
         }
+
+        void ICursoRepository.DismunirCupo(int id)
+        {
+            var query = "UPDATE curso SET cupo_restante = cupo_restante - 1 WHERE id_curso = @id";
+            using (var connection = new SqliteConnection(_CadenaDeConexion))
+            {
+                connection.Open();
+                using (var command = new SqliteCommand(query, connection))
+                {
+                    command.Parameters.Add(new SqliteParameter("@id", DbType.Int32) { Value = id });
+                    int rowsAffected = command.ExecuteNonQuery();
+                    if (rowsAffected == 0)
+                    {
+                        throw new Exception("No se encontró un registro con ese ID.");
+                    }
+                }
+            }
+        }
     }
 }

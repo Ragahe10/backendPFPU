@@ -79,5 +79,23 @@ namespace backendPFPU.Controllers
                 msg = "El curso se eliminó con éxito",
             });
         }
+
+        [HttpPut]
+        [Route("/DismunirCupo/{id}")]
+        public IActionResult DismunirCupo(int id)
+        {
+            try
+            {
+                _cursoRepository.DismunirCupo(id);
+                return Ok(new
+                {
+                    msg = "El cupo se disminuyó con éxito",
+                });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { msg = ex.Message });
+            }
+        }
     }
 }
