@@ -366,10 +366,36 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "backendPFPU.Controllers.CursoController",
-    "Method": "DismunirCupo",
-    "RelativePath": "DismunirCupo/{id}",
-    "HttpMethod": "PUT",
+    "ContainingType": "backendPFPU.Controllers.EstadisticaController",
+    "Method": "GetEstadisticasAdmin",
+    "RelativePath": "estadisticasAdmin",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "backendPFPU.Controllers.EstadisticaController",
+    "Method": "GetEstadisticasAlumno",
+    "RelativePath": "estadisticasAlumno/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "backendPFPU.Controllers.EstadisticaController",
+    "Method": "GetEstadisticasDocente",
+    "RelativePath": "estadisticasDocente/{id}",
+    "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [

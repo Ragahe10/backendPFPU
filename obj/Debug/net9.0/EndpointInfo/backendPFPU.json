@@ -653,29 +653,6 @@
         }
       }
     },
-    "/DismunirCupo/{id}": {
-      "put": {
-        "tags": [
-          "Curso"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
     "/NotificarVencimientos": {
       "post": {
         "tags": [
@@ -835,6 +812,64 @@
       "get": {
         "tags": [
           "Deuda"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/estadisticasAdmin": {
+      "get": {
+        "tags": [
+          "Estadistica"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/estadisticasDocente/{id}": {
+      "get": {
+        "tags": [
+          "Estadistica"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/estadisticasAlumno/{id}": {
+      "get": {
+        "tags": [
+          "Estadistica"
         ],
         "parameters": [
           {

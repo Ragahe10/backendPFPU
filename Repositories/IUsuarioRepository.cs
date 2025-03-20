@@ -19,6 +19,8 @@ public interface IUsuarioRepository{
 
     public List<Alumno> GetAlumnos();
 
+    public List<Alumno> GetAlumnosByDocente(int docente);
+
     public List<Alumno> GetAlumnosByMateria(int id_materia);
     public List<Alumno> GetAlumnosByCurso(int id_curso);
 

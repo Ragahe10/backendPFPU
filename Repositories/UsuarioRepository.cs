@@ -600,6 +600,28 @@ public class UsuarioRepository : IUsuarioRepository
         return alumnos;
     }
 
+    public List<Alumno> GetAlumnosByDocente(int docente)
+    {
+        var alumnos = new List<Alumno>();
+        var query = "SELECT DISTINCT(id_usuario) FROM usuario INNER JOIN alumno ON usuario.id_usuario = alumno.id_alumno INNER JOIN curso USING(id_curso) INNER JOIN anio USING(id_anio) INNER JOIN materia USING(id_anio) WHERE id_docente = @id_docente";
+        using (SqliteConnection connection = new SqliteConnection(_CadenaDeConexion))
+        {
+            connection.Open();
+            var command = new SqliteCommand(query, connection);
+            command.Parameters.AddWithValue("@id_docente", docente);
+            var reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                var alumno = new Alumno();
+                alumno.Id_usuario = reader.GetInt32(0);
+               
+                alumnos.Add(alumno);
+            }
+            connection.Close();
+        }
+        return alumnos;
+    }
+
     public List<Usuario> GetAdministradores() {
         var query = "Select * from usuario where tipo = 'Administrativo'";
         var administradores = new List<Usuario>();
