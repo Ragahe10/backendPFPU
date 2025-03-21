@@ -24,7 +24,7 @@ public class AuthController : ControllerBase
         using (var connection = new SqliteConnection(_connectionString))
         {
             connection.Open();
-            var query = "SELECT contrasenia, tipo, id_usuario, nombre, apellido FROM usuario WHERE dni = @Username";
+            var query = "SELECT contrasenia, tipo, id_usuario, nombre, apellido, activo FROM usuario WHERE dni = @Username";
 
             using (var command = new SqliteCommand(query, connection))
             {
@@ -40,12 +40,13 @@ public class AuthController : ControllerBase
                         var id_usuario = reader.GetInt64(2);
                         var nombre = reader.GetString(3);
                         var apellido = reader.GetString(4);
+                        var activo = reader.GetInt32(5);    
 
                         // Verifica la contraseña usando PasswordService
                         if (_passwordService.Verificar(hashedPassword, request.Password))
                         {
                             var token = _jwtService.GenerateToken(request.Dni);
-                            return Ok(new { token, tipo, id_usuario, nombre, apellido });
+                            return Ok(new { token, tipo, id_usuario, nombre, apellido, activo });
                         }
                     }
                 }

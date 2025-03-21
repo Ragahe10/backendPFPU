@@ -889,6 +889,18 @@
         }
       }
     },
+    "/graficosAdmin/asistencia": {
+      "get": {
+        "tags": [
+          "Estadistica"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/AddMateria": {
       "post": {
         "tags": [

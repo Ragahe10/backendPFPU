@@ -14,13 +14,15 @@ namespace backendPFPU.Controllers
          private readonly ICursoRepository _cursoRepository;
        private readonly IAsistenciaRepository _asistenciaRepository;
         private readonly IMateriaRepository _materiaRepository;
+        private readonly IDeudaRepository _deudaRepository;
 
-        public EstadisticaController(IUsuarioRepository usuarioRepository, ICursoRepository cursoRepository, IMateriaRepository materiaRepository, IAsistenciaRepository asistenciaRepository)
+        public EstadisticaController(IUsuarioRepository usuarioRepository, ICursoRepository cursoRepository, IMateriaRepository materiaRepository, IAsistenciaRepository asistenciaRepository, IDeudaRepository deudaRepository)
     {
         _usuarioRepository = usuarioRepository;
         _cursoRepository = cursoRepository;
             _asistenciaRepository = asistenciaRepository;
             _materiaRepository = materiaRepository;
+            _deudaRepository = deudaRepository;
         }
     
         [HttpGet]
@@ -32,6 +34,8 @@ namespace backendPFPU.Controllers
             statsAdmin.cantidadDocentes = _usuarioRepository.GetDocentes().Count;
             statsAdmin.cantidadMaterias = _materiaRepository.GetMaterias().Count;
             statsAdmin.cantidadCursos = _cursoRepository.GetAll().Count;
+            statsAdmin.PorcentajeAsistenciasGlobal = _asistenciaRepository.GetPorcentajeAsistenciasGlobal();
+            statsAdmin.AlumnosConDeuda = _deudaRepository.GetCantidadAlumnosConDeuda();
 
             return Ok(statsAdmin);
         }
@@ -56,6 +60,13 @@ namespace backendPFPU.Controllers
             statsAlumno.cantidadMaterias = _materiaRepository.GetCantidadMateriasByAlumno(id);
             statsAlumno.porcentajeAsistencia = _asistenciaRepository.GetPorcentajeAsistenciasByAlumno(id);
             return Ok(statsAlumno);
+        }
+
+        [HttpGet]
+        [Route("/graficosAdmin/asistencia")]
+        public IActionResult GetGraficoAsistenciaAdmin()
+        {
+            return Ok(_asistenciaRepository.GetGraficoAsistenciaAdmin());
         }
     }
 }

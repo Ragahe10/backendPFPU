@@ -180,6 +180,23 @@ namespace backendPFPU.Repositories
             }
         }
 
+        public int GetPorcentajeAsistenciasGlobal()
+        {
+            var queryAsistencias = "SELECT COUNT(*) FROM asistencia WHERE estado = 'P' OR estado = 'T'";
+            var queryTotal = "SELECT COUNT(*) FROM asistencia";
+            using (var connection = new SqliteConnection(_CadenaDeConexion))
+            {
+                connection.Open();
+                using (var command = new SqliteCommand(queryAsistencias, connection))
+                {
+                    int asistencias = Convert.ToInt32(command.ExecuteScalar());
+                    command.CommandText = queryTotal;
+                    int total = Convert.ToInt32(command.ExecuteScalar());
+                    return total == 0 ? 0 : (asistencias * 100) / total;
+                }
+            }
+        }
+
         public int GetPresentesByMateriaAlumno(int id_materia, int id_alumno)
         {
             var query = "SELECT COUNT(*) FROM asistencia WHERE id_materia = @id_materia AND id_alumno = @id_alumno AND estado = 'P'";
@@ -224,6 +241,61 @@ namespace backendPFPU.Repositories
                 }
             }
         }
+
+
+        public GraficoAsistenciaAdmin GetGraficoAsistenciaAdmin()
+        {
+            var query = @"
+            SELECT 
+                a.anio AS label,
+                ROUND(
+                    AVG(
+                        CASE 
+                            WHEN ast.estado = 'P' THEN 100 
+                            WHEN ast.estado = 'T' THEN 50 
+                            WHEN ast.estado = 'A' THEN 0 
+                        END
+                    ), 
+                1) AS porcentaje_asistencia
+            FROM 
+                asistencia ast
+            JOIN 
+                alumno al ON ast.id_alumno = al.id_alumno
+            JOIN 
+                curso c ON al.id_curso = c.id_curso
+            JOIN 
+                anio a ON c.id_anio = a.id_anio
+            GROUP BY 
+                a.id_anio, a.anio
+            ORDER BY 
+                a.id_anio";
+
+            var labels = new List<string>();
+            var data = new List<float>();
+
+            using (var connection = new SqliteConnection(_CadenaDeConexion))
+            {
+                connection.Open();
+                using (var command = new SqliteCommand(query, connection))
+                {
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            labels.Add(reader.GetString(0));  // Columna "label"
+                            data.Add((float)reader.GetDouble(1)); // Convertir double a float
+                        }
+                    }
+                }
+            }
+
+            return new GraficoAsistenciaAdmin
+            {
+                labels = labels.ToArray(),
+                data = data.ToArray()
+            };
+        }
+
 
     }
 }

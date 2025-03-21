@@ -126,6 +126,19 @@ namespace backendPFPU.Repositories
             }
         }
 
+        public int GetCantidadAlumnosConDeuda()
+        {
+            var query = "SELECT COUNT(DISTINCT id_alumno) FROM deuda WHERE monto > 0";
+            using (var connection = new SqliteConnection(_CadenaDeConexion))
+            {
+                connection.Open();
+                using (var command = new SqliteCommand(query, connection))
+                {
+                    return (int)(long)command.ExecuteScalar();
+                }
+            }
+        }
+
         public List<Deuda> GetDeudasByAlumno(int id)
         {
             var query = "SELECT * FROM deuda WHERE id_alumno = @id";

@@ -10,6 +10,10 @@ namespace backendPFPU.Repositories
         public void DeleteAsistencia(int id, int id_alumno, int id_materia, string fecha);
         void UpdateAsistencia(Asistencia item);
 
+        GraficoAsistenciaAdmin GetGraficoAsistenciaAdmin();
+
+        int GetPorcentajeAsistenciasGlobal();
+
         int GetPorcentajeAsistenciasByAlumno(int id_alumno);
         int GetPorcentajeAsistenciasByMateriaAlumno(int id_materia, int id_alumno);
 

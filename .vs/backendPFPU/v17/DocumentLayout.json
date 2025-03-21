@@ -3,16 +3,40 @@
   "WorkspaceRootPath": "C:\\Users\\boni\\source\\repos\\backendPFPU\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{664AB160-3194-07D5-AECE-F37DDEFC1FD6}|backendPFPU.csproj|c:\\users\\boni\\source\\repos\\backendpfpu\\repositories\\usuariorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{664AB160-3194-07D5-AECE-F37DDEFC1FD6}|backendPFPU.csproj|solutionrelative:repositories\\usuariorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{664AB160-3194-07D5-AECE-F37DDEFC1FD6}|backendPFPU.csproj|c:\\users\\boni\\source\\repos\\backendpfpu\\repositories\\asistenciarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{664AB160-3194-07D5-AECE-F37DDEFC1FD6}|backendPFPU.csproj|solutionrelative:repositories\\asistenciarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{664AB160-3194-07D5-AECE-F37DDEFC1FD6}|backendPFPU.csproj|c:\\users\\boni\\source\\repos\\backendpfpu\\models\\graficoasistenciaadmin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{664AB160-3194-07D5-AECE-F37DDEFC1FD6}|backendPFPU.csproj|solutionrelative:models\\graficoasistenciaadmin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{664AB160-3194-07D5-AECE-F37DDEFC1FD6}|backendPFPU.csproj|c:\\users\\boni\\source\\repos\\backendpfpu\\repositories\\iasistenciarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{664AB160-3194-07D5-AECE-F37DDEFC1FD6}|backendPFPU.csproj|solutionrelative:repositories\\iasistenciarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{664AB160-3194-07D5-AECE-F37DDEFC1FD6}|backendPFPU.csproj|c:\\users\\boni\\source\\repos\\backendpfpu\\controllers\\estadisticacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{664AB160-3194-07D5-AECE-F37DDEFC1FD6}|backendPFPU.csproj|solutionrelative:controllers\\estadisticacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{664AB160-3194-07D5-AECE-F37DDEFC1FD6}|backendPFPU.csproj|c:\\users\\boni\\source\\repos\\backendpfpu\\repositories\\iasistenciarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{664AB160-3194-07D5-AECE-F37DDEFC1FD6}|backendPFPU.csproj|solutionrelative:repositories\\iasistenciarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{664AB160-3194-07D5-AECE-F37DDEFC1FD6}|backendPFPU.csproj|c:\\users\\boni\\source\\repos\\backendpfpu\\repositories\\deudarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{664AB160-3194-07D5-AECE-F37DDEFC1FD6}|backendPFPU.csproj|solutionrelative:repositories\\deudarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{664AB160-3194-07D5-AECE-F37DDEFC1FD6}|backendPFPU.csproj|c:\\users\\boni\\source\\repos\\backendpfpu\\repositories\\ideudarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{664AB160-3194-07D5-AECE-F37DDEFC1FD6}|backendPFPU.csproj|solutionrelative:repositories\\ideudarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{664AB160-3194-07D5-AECE-F37DDEFC1FD6}|backendPFPU.csproj|c:\\users\\boni\\source\\repos\\backendpfpu\\models\\estadisticasadmin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{664AB160-3194-07D5-AECE-F37DDEFC1FD6}|backendPFPU.csproj|solutionrelative:models\\estadisticasadmin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{664AB160-3194-07D5-AECE-F37DDEFC1FD6}|backendPFPU.csproj|c:\\users\\boni\\source\\repos\\backendpfpu\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{664AB160-3194-07D5-AECE-F37DDEFC1FD6}|backendPFPU.csproj|solutionrelative:controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{664AB160-3194-07D5-AECE-F37DDEFC1FD6}|backendPFPU.csproj|c:\\users\\boni\\source\\repos\\backendpfpu\\repositories\\usuariorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{664AB160-3194-07D5-AECE-F37DDEFC1FD6}|backendPFPU.csproj|solutionrelative:repositories\\usuariorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{664AB160-3194-07D5-AECE-F37DDEFC1FD6}|backendPFPU.csproj|c:\\users\\boni\\source\\repos\\backendpfpu\\repositories\\imateriarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -25,10 +49,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{664AB160-3194-07D5-AECE-F37DDEFC1FD6}|backendPFPU.csproj|c:\\users\\boni\\source\\repos\\backendpfpu\\models\\estadisticasestudiante.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{664AB160-3194-07D5-AECE-F37DDEFC1FD6}|backendPFPU.csproj|solutionrelative:models\\estadisticasestudiante.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{664AB160-3194-07D5-AECE-F37DDEFC1FD6}|backendPFPU.csproj|c:\\users\\boni\\source\\repos\\backendpfpu\\repositories\\asistenciarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{664AB160-3194-07D5-AECE-F37DDEFC1FD6}|backendPFPU.csproj|solutionrelative:repositories\\asistenciarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{664AB160-3194-07D5-AECE-F37DDEFC1FD6}|backendPFPU.csproj|c:\\users\\boni\\source\\repos\\backendpfpu\\repositories\\iusuariorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -51,16 +71,8 @@
       "RelativeMoniker": "D:0:0:{664AB160-3194-07D5-AECE-F37DDEFC1FD6}|backendPFPU.csproj|solutionrelative:controllers\\cursocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{664AB160-3194-07D5-AECE-F37DDEFC1FD6}|backendPFPU.csproj|c:\\users\\boni\\source\\repos\\backendpfpu\\models\\estadisticasadmin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{664AB160-3194-07D5-AECE-F37DDEFC1FD6}|backendPFPU.csproj|solutionrelative:models\\estadisticasadmin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{664AB160-3194-07D5-AECE-F37DDEFC1FD6}|backendPFPU.csproj|c:\\users\\boni\\source\\repos\\backendpfpu\\controllers\\aniocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{664AB160-3194-07D5-AECE-F37DDEFC1FD6}|backendPFPU.csproj|solutionrelative:controllers\\aniocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{664AB160-3194-07D5-AECE-F37DDEFC1FD6}|backendPFPU.csproj|c:\\users\\boni\\source\\repos\\backendpfpu\\repositories\\ideudarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{664AB160-3194-07D5-AECE-F37DDEFC1FD6}|backendPFPU.csproj|solutionrelative:repositories\\ideudarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{664AB160-3194-07D5-AECE-F37DDEFC1FD6}|backendPFPU.csproj|c:\\users\\boni\\source\\repos\\backendpfpu\\controllers\\usuariocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -93,10 +105,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{664AB160-3194-07D5-AECE-F37DDEFC1FD6}|backendPFPU.csproj|c:\\users\\boni\\source\\repos\\backendpfpu\\models\\tipopago.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{664AB160-3194-07D5-AECE-F37DDEFC1FD6}|backendPFPU.csproj|solutionrelative:models\\tipopago.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{664AB160-3194-07D5-AECE-F37DDEFC1FD6}|backendPFPU.csproj|c:\\users\\boni\\source\\repos\\backendpfpu\\repositories\\deudarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{664AB160-3194-07D5-AECE-F37DDEFC1FD6}|backendPFPU.csproj|solutionrelative:repositories\\deudarepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{664AB160-3194-07D5-AECE-F37DDEFC1FD6}|backendPFPU.csproj|c:\\users\\boni\\source\\repos\\backendpfpu\\controllers\\deudacontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -153,10 +161,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{664AB160-3194-07D5-AECE-F37DDEFC1FD6}|backendPFPU.csproj|c:\\users\\boni\\source\\repos\\backendpfpu\\helpers\\jwtservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{664AB160-3194-07D5-AECE-F37DDEFC1FD6}|backendPFPU.csproj|solutionrelative:helpers\\jwtservices.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{664AB160-3194-07D5-AECE-F37DDEFC1FD6}|backendPFPU.csproj|c:\\users\\boni\\source\\repos\\backendpfpu\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{664AB160-3194-07D5-AECE-F37DDEFC1FD6}|backendPFPU.csproj|solutionrelative:controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{664AB160-3194-07D5-AECE-F37DDEFC1FD6}|backendPFPU.csproj|c:\\users\\boni\\source\\repos\\backendpfpu\\repositories\\pagorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -218,11 +222,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 40,
+          "SelectedChildIndex": 14,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 1,
+              "Title": "GraficoAsistenciaAdmin.cs",
+              "DocumentMoniker": "C:\\Users\\boni\\source\\repos\\backendPFPU\\Models\\GraficoAsistenciaAdmin.cs",
+              "RelativeDocumentMoniker": "Models\\GraficoAsistenciaAdmin.cs",
+              "ToolTip": "C:\\Users\\boni\\source\\repos\\backendPFPU\\Models\\GraficoAsistenciaAdmin.cs",
+              "RelativeToolTip": "Models\\GraficoAsistenciaAdmin.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-21T19:50:25.07Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
               "Title": "EstadisticasEstudiante.cs",
               "DocumentMoniker": "C:\\Users\\boni\\source\\repos\\backendPFPU\\Models\\EstadisticasEstudiante.cs",
               "RelativeDocumentMoniker": "Models\\EstadisticasEstudiante.cs",
@@ -234,7 +251,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 13,
               "Title": "EstadisticasDocente.cs",
               "DocumentMoniker": "C:\\Users\\boni\\source\\repos\\backendPFPU\\Models\\EstadisticasDocente.cs",
               "RelativeDocumentMoniker": "Models\\EstadisticasDocente.cs",
@@ -246,31 +263,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 6,
               "Title": "EstadisticasAdmin.cs",
               "DocumentMoniker": "C:\\Users\\boni\\source\\repos\\backendPFPU\\Models\\EstadisticasAdmin.cs",
               "RelativeDocumentMoniker": "Models\\EstadisticasAdmin.cs",
               "ToolTip": "C:\\Users\\boni\\source\\repos\\backendPFPU\\Models\\EstadisticasAdmin.cs",
               "RelativeToolTip": "Models\\EstadisticasAdmin.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAvAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-20T20:51:55.338Z"
+              "WhenOpened": "2025-03-20T20:51:55.338Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "EstadisticaController.cs",
               "DocumentMoniker": "C:\\Users\\boni\\source\\repos\\backendPFPU\\Controllers\\EstadisticaController.cs",
               "RelativeDocumentMoniker": "Controllers\\EstadisticaController.cs",
               "ToolTip": "C:\\Users\\boni\\source\\repos\\backendPFPU\\Controllers\\EstadisticaController.cs",
               "RelativeToolTip": "Controllers\\EstadisticaController.cs",
-              "ViewState": "AgIAABcAAAAAAAAAAADwvzgAAAAsAAAAAAAAAA==",
+              "ViewState": "AgIAACQAAAAAAAAAAAAowEUAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-20T20:47:22.982Z"
+              "WhenOpened": "2025-03-20T20:47:22.982Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 21,
               "Title": ".gitignore",
               "DocumentMoniker": "C:\\Users\\boni\\source\\repos\\backendPFPU\\.gitignore",
               "RelativeDocumentMoniker": ".gitignore",
@@ -282,7 +301,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 26,
               "Title": "DeudaController.cs",
               "DocumentMoniker": "C:\\Users\\boni\\source\\repos\\backendPFPU\\Controllers\\DeudaController.cs",
               "RelativeDocumentMoniker": "Controllers\\DeudaController.cs",
@@ -294,31 +313,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 4,
               "Title": "DeudaRepository.cs",
               "DocumentMoniker": "C:\\Users\\boni\\source\\repos\\backendPFPU\\Repositories\\DeudaRepository.cs",
               "RelativeDocumentMoniker": "Repositories\\DeudaRepository.cs",
               "ToolTip": "C:\\Users\\boni\\source\\repos\\backendPFPU\\Repositories\\DeudaRepository.cs",
               "RelativeToolTip": "Repositories\\DeudaRepository.cs",
-              "ViewState": "AgIAAMYAAAAAAAAAAAAYwNwAAAANAAAAAAAAAA==",
+              "ViewState": "AgIAAGoAAAAAAAAAAAAuwIsAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-10T14:39:10.44Z"
+              "WhenOpened": "2025-03-10T14:39:10.44Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 5,
               "Title": "IDeudaRepository.cs",
               "DocumentMoniker": "C:\\Users\\boni\\source\\repos\\backendPFPU\\Repositories\\IDeudaRepository.cs",
               "RelativeDocumentMoniker": "Repositories\\IDeudaRepository.cs",
               "ToolTip": "C:\\Users\\boni\\source\\repos\\backendPFPU\\Repositories\\IDeudaRepository.cs",
               "RelativeToolTip": "Repositories\\IDeudaRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwA8AAAA1AAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwA8AAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-10T14:32:43.428Z"
+              "WhenOpened": "2025-03-10T14:32:43.428Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 29,
               "Title": "Deuda.cs",
               "DocumentMoniker": "C:\\Users\\boni\\source\\repos\\backendPFPU\\Models\\Deuda.cs",
               "RelativeDocumentMoniker": "Models\\Deuda.cs",
@@ -330,7 +351,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 22,
               "Title": "EmailService.cs",
               "DocumentMoniker": "C:\\Users\\boni\\source\\repos\\backendPFPU\\Helpers\\EmailService.cs",
               "RelativeDocumentMoniker": "Helpers\\EmailService.cs",
@@ -342,7 +363,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 43,
               "Title": "Bcrypt.cs",
               "DocumentMoniker": "C:\\Users\\boni\\source\\repos\\backendPFPU\\Helpers\\Bcrypt.cs",
               "RelativeDocumentMoniker": "Helpers\\Bcrypt.cs",
@@ -354,7 +375,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 36,
               "Title": "AsistenciaController.cs",
               "DocumentMoniker": "C:\\Users\\boni\\source\\repos\\backendPFPU\\Controllers\\AsistenciaController.cs",
               "RelativeDocumentMoniker": "Controllers\\AsistenciaController.cs",
@@ -366,7 +387,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 20,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\boni\\source\\repos\\backendPFPU\\appsettings.json",
               "RelativeDocumentMoniker": "appsettings.json",
@@ -378,15 +399,16 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 0,
               "Title": "AsistenciaRepository.cs",
               "DocumentMoniker": "C:\\Users\\boni\\source\\repos\\backendPFPU\\Repositories\\AsistenciaRepository.cs",
               "RelativeDocumentMoniker": "Repositories\\AsistenciaRepository.cs",
               "ToolTip": "C:\\Users\\boni\\source\\repos\\backendPFPU\\Repositories\\AsistenciaRepository.cs",
               "RelativeToolTip": "Repositories\\AsistenciaRepository.cs",
-              "ViewState": "AgIAAKsAAAAAAAAAAAAcwOEAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAOoAAAAAAAAAAAAAwCgBAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-08T16:00:33.598Z"
+              "WhenOpened": "2025-03-08T16:00:33.598Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -396,13 +418,14 @@
               "RelativeDocumentMoniker": "Repositories\\IAsistenciaRepository.cs",
               "ToolTip": "C:\\Users\\boni\\source\\repos\\backendPFPU\\Repositories\\IAsistenciaRepository.cs",
               "RelativeToolTip": "Repositories\\IAsistenciaRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAABEAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAA4AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-08T15:58:10.279Z"
+              "WhenOpened": "2025-03-08T15:58:10.279Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 44,
               "Title": "Asistencia.cs",
               "DocumentMoniker": "C:\\Users\\boni\\source\\repos\\backendPFPU\\Models\\Asistencia.cs",
               "RelativeDocumentMoniker": "Models\\Asistencia.cs",
@@ -414,7 +437,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 32,
               "Title": "NotaController.cs",
               "DocumentMoniker": "C:\\Users\\boni\\source\\repos\\backendPFPU\\Controllers\\NotaController.cs",
               "RelativeDocumentMoniker": "Controllers\\NotaController.cs",
@@ -426,7 +449,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 30,
               "Title": "NotaRepository.cs",
               "DocumentMoniker": "C:\\Users\\boni\\source\\repos\\backendPFPU\\Repositories\\NotaRepository.cs",
               "RelativeDocumentMoniker": "Repositories\\NotaRepository.cs",
@@ -438,7 +461,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 35,
               "Title": "INotaRepository.cs",
               "DocumentMoniker": "C:\\Users\\boni\\source\\repos\\backendPFPU\\Repositories\\INotaRepository.cs",
               "RelativeDocumentMoniker": "Repositories\\INotaRepository.cs",
@@ -450,7 +473,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 37,
               "Title": "Nota.cs",
               "DocumentMoniker": "C:\\Users\\boni\\source\\repos\\backendPFPU\\Models\\Nota.cs",
               "RelativeDocumentMoniker": "Models\\Nota.cs",
@@ -462,7 +485,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 39,
               "Title": "JwtServices.cs",
               "DocumentMoniker": "C:\\Users\\boni\\source\\repos\\backendPFPU\\Helpers\\JwtServices.cs",
               "RelativeDocumentMoniker": "Helpers\\JwtServices.cs",
@@ -474,7 +497,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 41,
               "Title": "PagoController.cs",
               "DocumentMoniker": "C:\\Users\\boni\\source\\repos\\backendPFPU\\Controllers\\PagoController.cs",
               "RelativeDocumentMoniker": "Controllers\\PagoController.cs",
@@ -486,7 +509,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 40,
               "Title": "PagoRepository.cs",
               "DocumentMoniker": "C:\\Users\\boni\\source\\repos\\backendPFPU\\Repositories\\PagoRepository.cs",
               "RelativeDocumentMoniker": "Repositories\\PagoRepository.cs",
@@ -498,7 +521,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 27,
               "Title": "IPagoRepository.cs",
               "DocumentMoniker": "C:\\Users\\boni\\source\\repos\\backendPFPU\\Repositories\\IPagoRepository.cs",
               "RelativeDocumentMoniker": "Repositories\\IPagoRepository.cs",
@@ -510,7 +533,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 28,
               "Title": "Pago.cs",
               "DocumentMoniker": "C:\\Users\\boni\\source\\repos\\backendPFPU\\Models\\Pago.cs",
               "RelativeDocumentMoniker": "Models\\Pago.cs",
@@ -522,7 +545,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 45,
+              "DocumentIndex": 46,
               "Title": "TipoPagoController.cs",
               "DocumentMoniker": "C:\\Users\\boni\\source\\repos\\backendPFPU\\Controllers\\TipoPagoController.cs",
               "RelativeDocumentMoniker": "Controllers\\TipoPagoController.cs",
@@ -534,7 +557,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 44,
+              "DocumentIndex": 45,
               "Title": "TipoPagoRepository.cs",
               "DocumentMoniker": "C:\\Users\\boni\\source\\repos\\backendPFPU\\Repositories\\TipoPagoRepository.cs",
               "RelativeDocumentMoniker": "Repositories\\TipoPagoRepository.cs",
@@ -546,7 +569,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 46,
+              "DocumentIndex": 47,
               "Title": "ITipoPagoRepository.cs",
               "DocumentMoniker": "C:\\Users\\boni\\source\\repos\\backendPFPU\\Repositories\\ITipoPagoRepository.cs",
               "RelativeDocumentMoniker": "Repositories\\ITipoPagoRepository.cs",
@@ -558,7 +581,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 25,
               "Title": "TipoPago.cs",
               "DocumentMoniker": "C:\\Users\\boni\\source\\repos\\backendPFPU\\Models\\TipoPago.cs",
               "RelativeDocumentMoniker": "Models\\TipoPago.cs",
@@ -570,7 +593,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 49,
+              "DocumentIndex": 50,
               "Title": "launchSettings.json",
               "DocumentMoniker": "C:\\Users\\boni\\source\\repos\\backendPFPU\\Properties\\launchSettings.json",
               "RelativeDocumentMoniker": "Properties\\launchSettings.json",
@@ -582,7 +605,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 50,
+              "DocumentIndex": 51,
               "Title": "appsettings.Development.json",
               "DocumentMoniker": "C:\\Users\\boni\\source\\repos\\backendPFPU\\appsettings.Development.json",
               "RelativeDocumentMoniker": "appsettings.Development.json",
@@ -594,7 +617,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 31,
               "Title": "MateriaController.cs",
               "DocumentMoniker": "C:\\Users\\boni\\source\\repos\\backendPFPU\\Controllers\\MateriaController.cs",
               "RelativeDocumentMoniker": "Controllers\\MateriaController.cs",
@@ -606,7 +629,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 10,
               "Title": "MateriaRepository.cs",
               "DocumentMoniker": "C:\\Users\\boni\\source\\repos\\backendPFPU\\Repositories\\MateriaRepository.cs",
               "RelativeDocumentMoniker": "Repositories\\MateriaRepository.cs",
@@ -618,7 +641,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 38,
               "Title": "Materia.cs",
               "DocumentMoniker": "C:\\Users\\boni\\source\\repos\\backendPFPU\\Models\\Materia.cs",
               "RelativeDocumentMoniker": "Models\\Materia.cs",
@@ -630,7 +653,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 9,
               "Title": "IMateriaRepository.cs",
               "DocumentMoniker": "C:\\Users\\boni\\source\\repos\\backendPFPU\\Repositories\\IMateriaRepository.cs",
               "RelativeDocumentMoniker": "Repositories\\IMateriaRepository.cs",
@@ -642,7 +665,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 15,
               "Title": "ICursoRepository.cs",
               "DocumentMoniker": "C:\\Users\\boni\\source\\repos\\backendPFPU\\Repositories\\ICursoRepository.cs",
               "RelativeDocumentMoniker": "Repositories\\ICursoRepository.cs",
@@ -654,7 +677,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 17,
               "Title": "AnioController.cs",
               "DocumentMoniker": "C:\\Users\\boni\\source\\repos\\backendPFPU\\Controllers\\AnioController.cs",
               "RelativeDocumentMoniker": "Controllers\\AnioController.cs",
@@ -666,7 +689,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 33,
               "Title": "AnioRepository.cs",
               "DocumentMoniker": "C:\\Users\\boni\\source\\repos\\backendPFPU\\Repositories\\AnioRepository.cs",
               "RelativeDocumentMoniker": "Repositories\\AnioRepository.cs",
@@ -678,7 +701,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 19,
               "Title": "Curso.cs",
               "DocumentMoniker": "C:\\Users\\boni\\source\\repos\\backendPFPU\\Models\\Curso.cs",
               "RelativeDocumentMoniker": "Models\\Curso.cs",
@@ -690,7 +713,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 12,
               "Title": "IUsuarioRepository.cs",
               "DocumentMoniker": "C:\\Users\\boni\\source\\repos\\backendPFPU\\Repositories\\IUsuarioRepository.cs",
               "RelativeDocumentMoniker": "Repositories\\IUsuarioRepository.cs",
@@ -702,7 +725,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 8,
               "Title": "UsuarioRepository.cs",
               "DocumentMoniker": "C:\\Users\\boni\\source\\repos\\backendPFPU\\Repositories\\UsuarioRepository.cs",
               "RelativeDocumentMoniker": "Repositories\\UsuarioRepository.cs",
@@ -714,7 +737,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 24,
               "Title": "Alumno.cs",
               "DocumentMoniker": "C:\\Users\\boni\\source\\repos\\backendPFPU\\Models\\Alumno.cs",
               "RelativeDocumentMoniker": "Models\\Alumno.cs",
@@ -726,7 +749,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 18,
               "Title": "UsuarioController.cs",
               "DocumentMoniker": "C:\\Users\\boni\\source\\repos\\backendPFPU\\Controllers\\UsuarioController.cs",
               "RelativeDocumentMoniker": "Controllers\\UsuarioController.cs",
@@ -738,7 +761,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 23,
               "Title": "Usuario.cs",
               "DocumentMoniker": "C:\\Users\\boni\\source\\repos\\backendPFPU\\Models\\Usuario.cs",
               "RelativeDocumentMoniker": "Models\\Usuario.cs",
@@ -750,7 +773,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 14,
               "Title": "CursoRepository.cs",
               "DocumentMoniker": "C:\\Users\\boni\\source\\repos\\backendPFPU\\Repositories\\CursoRepository.cs",
               "RelativeDocumentMoniker": "Repositories\\CursoRepository.cs",
@@ -762,7 +785,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 16,
               "Title": "CursoController.cs",
               "DocumentMoniker": "C:\\Users\\boni\\source\\repos\\backendPFPU\\Controllers\\CursoController.cs",
               "RelativeDocumentMoniker": "Controllers\\CursoController.cs",
@@ -774,19 +797,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 7,
               "Title": "AuthController.cs",
               "DocumentMoniker": "C:\\Users\\boni\\source\\repos\\backendPFPU\\Controllers\\AuthController.cs",
               "RelativeDocumentMoniker": "Controllers\\AuthController.cs",
               "ToolTip": "C:\\Users\\boni\\source\\repos\\backendPFPU\\Controllers\\AuthController.cs",
               "RelativeToolTip": "Controllers\\AuthController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAHQAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABUAAAAAAAAAAAAowDAAAABdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-27T13:05:05.597Z"
+              "WhenOpened": "2025-02-27T13:05:05.597Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 47,
+              "DocumentIndex": 48,
               "Title": "Anio.cs",
               "DocumentMoniker": "C:\\Users\\boni\\source\\repos\\backendPFPU\\Models\\Anio.cs",
               "RelativeDocumentMoniker": "Models\\Anio.cs",
@@ -798,7 +822,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 34,
               "Title": "IAnioRepository.cs",
               "DocumentMoniker": "C:\\Users\\boni\\source\\repos\\backendPFPU\\Repositories\\IAnioRepository.cs",
               "RelativeDocumentMoniker": "Repositories\\IAnioRepository.cs",
@@ -810,7 +834,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
+              "DocumentIndex": 42,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\boni\\source\\repos\\backendPFPU\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
@@ -822,7 +846,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 51,
+              "DocumentIndex": 52,
               "Title": "Administrador.cs",
               "DocumentMoniker": "C:\\Users\\boni\\source\\repos\\backendPFPU\\Models\\Administrador.cs",
               "RelativeDocumentMoniker": "Models\\Administrador.cs",
@@ -834,7 +858,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 48,
+              "DocumentIndex": 49,
               "Title": "Docente.cs",
               "DocumentMoniker": "C:\\Users\\boni\\source\\repos\\backendPFPU\\Models\\Docente.cs",
               "RelativeDocumentMoniker": "Models\\Docente.cs",

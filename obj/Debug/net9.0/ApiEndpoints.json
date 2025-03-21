@@ -1074,6 +1074,16 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "backendPFPU.Controllers.EstadisticaController",
+    "Method": "GetGraficoAsistenciaAdmin",
+    "RelativePath": "graficosAdmin/asistencia",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "backendPFPU.Controllers.DeudaController",
     "Method": "NotificarAlumnosConDeudas",
     "RelativePath": "NotificarVencimientos",
