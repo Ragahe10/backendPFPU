@@ -284,5 +284,75 @@ namespace backendPFPU.Repositories
             }
             return notas;
         }
+
+        public GraficoPromedioDocente GetGraficoPromedioDocente(int id_docente)
+        {
+            var query = @"
+        SELECT trimestre, AVG(nota) 
+        FROM nota 
+        INNER JOIN materia ON nota.id_materia = materia.id_materia 
+        WHERE materia.id_docente = @id_docente 
+        GROUP BY trimestre";
+
+            var grafico = new GraficoPromedioDocente();
+
+            using (var connection = new SqliteConnection(_CadenaDeConexion))
+            {
+                connection.Open();
+                using (var command = new SqliteCommand(query, connection))
+                {
+                    command.Parameters.Add(new SqliteParameter("@id_docente", DbType.Int32) { Value = id_docente });
+
+                    using (var reader = command.ExecuteReader())
+                    {
+                        var trimestres = new List<string>();
+                        var promedios = new List<float>();
+
+                        while (reader.Read())
+                        {
+                            trimestres.Add(reader.GetInt32(0).ToString());
+                            promedios.Add((float)reader.GetDouble(1)); // Convertir a float
+                        }
+
+                        grafico.labels = trimestres.ToArray();
+                        grafico.data = promedios.ToArray();
+                    }
+                }
+            }
+            return grafico;
+        }
+
+        public GraficoNotasAlumno GetGraficoNotasAlumno(int id_alumno)
+        {
+            var query = @"
+        SELECT materia.materia, AVG(nota.nota)
+        FROM nota
+        INNER JOIN materia ON nota.id_materia = materia.id_materia
+        WHERE nota.id_alumno = @id_alumno
+        GROUP BY materia.id_materia";
+            var grafico = new GraficoNotasAlumno();
+            using (var connection = new SqliteConnection(_CadenaDeConexion))
+            {
+                connection.Open();
+                using (var command = new SqliteCommand(query, connection))
+                {
+                    command.Parameters.Add(new SqliteParameter("@id_alumno", DbType.Int32) { Value = id_alumno });
+                    using (var reader = command.ExecuteReader())
+                    {
+                        var materias = new List<string>();
+                        var promedios = new List<float>();
+                        while (reader.Read())
+                        {
+                            materias.Add(reader.GetString(0));
+                            promedios.Add((float)reader.GetDouble(1)); // Convertir a float
+                        }
+                        grafico.labels = materias.ToArray();
+                        grafico.data = promedios.ToArray();
+                    }
+                }
+            }
+            return grafico;
+        }
+
     }
 }

@@ -17,6 +17,10 @@ namespace backendPFPU.Repositories
 
         float GetPromedioByAlumno(int id_alumno);
 
+        GraficoPromedioDocente GetGraficoPromedioDocente(int id_docente); //Trae el promedio de notas de los alumnos de un docente
+
+        GraficoNotasAlumno GetGraficoNotasAlumno(int id_alumno); //Trae el promedio de notas de un alumno de distintas materias
+
         float GetPromedioByMateriaAlumno(int id_materia, int id_alumno);
     }
 }

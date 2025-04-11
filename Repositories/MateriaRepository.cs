@@ -245,7 +245,79 @@ namespace backendPFPU.Repositories
             return cantidad;
         }
 
-     
+        public int GetCantidadMateriasAprobadasByAlumno(int id_alumno)
+        {
+            var query = @"
+        SELECT COUNT(*) 
+        FROM (
+            SELECT n.id_materia
+            FROM nota n
+            WHERE n.id_alumno = @id_alumno
+            GROUP BY n.id_materia
+            HAVING 
+                (
+                    COUNT(CASE WHEN n.trimestre IN (1, 2, 3) AND n.nota IS NOT NULL THEN 1 END) = 3
+                    AND AVG(CASE WHEN n.trimestre IN (1, 2, 3) THEN n.nota END) >= 6
+                )
+                OR 
+                MAX(CASE WHEN n.trimestre = 0 THEN n.nota ELSE 0 END) >= 6
+        ) AS materias_aprobadas
+    ";
+
+            int cantidad = 0;
+            using (var connection = new SqliteConnection(_CadenaDeConexion))
+            {
+                connection.Open();
+                using (var command = new SqliteCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@id_alumno", id_alumno);
+                    cantidad = Convert.ToInt32(command.ExecuteScalar());
+                }
+            }
+            return cantidad;
+        }
+
+
+
+        public int GetCantidadMateriasDesaprobadasByAlumno(int id_alumno)
+        {
+            var query = @"
+        SELECT COUNT(*) 
+        FROM (
+            SELECT n.id_materia
+            FROM nota n
+            WHERE n.id_alumno = @id_alumno
+            GROUP BY n.id_materia
+            HAVING 
+                (
+                    COUNT(DISTINCT CASE WHEN n.trimestre IN (1, 2, 3) THEN n.trimestre END) = 3
+                    AND
+                    AVG(CASE WHEN n.trimestre IN (1, 2, 3) THEN n.nota END) < 6
+                )
+                OR
+                (
+                    MAX(CASE WHEN n.trimestre = 0 THEN n.nota END) < 6
+                )
+        ) AS materias_desaprobadas
+    ";
+
+            int cantidad = 0;
+            using (var connection = new SqliteConnection(_CadenaDeConexion))
+            {
+                connection.Open();
+                using (var command = new SqliteCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@id_alumno", id_alumno);
+                    cantidad = Convert.ToInt32(command.ExecuteScalar());
+                }
+            }
+            return cantidad;
+        }
+
+
+
+
+
 
 
 

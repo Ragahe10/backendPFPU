@@ -15,16 +15,18 @@ namespace backendPFPU.Controllers
        private readonly IAsistenciaRepository _asistenciaRepository;
         private readonly IMateriaRepository _materiaRepository;
         private readonly IDeudaRepository _deudaRepository;
+        private readonly INotaRepository _notaRepository;
 
-        public EstadisticaController(IUsuarioRepository usuarioRepository, ICursoRepository cursoRepository, IMateriaRepository materiaRepository, IAsistenciaRepository asistenciaRepository, IDeudaRepository deudaRepository)
-    {
-        _usuarioRepository = usuarioRepository;
-        _cursoRepository = cursoRepository;
+        public EstadisticaController(IUsuarioRepository usuarioRepository, ICursoRepository cursoRepository, IMateriaRepository materiaRepository, IAsistenciaRepository asistenciaRepository, IDeudaRepository deudaRepository, INotaRepository notaRepository)
+        {
+            _usuarioRepository = usuarioRepository;
+            _cursoRepository = cursoRepository;
             _asistenciaRepository = asistenciaRepository;
             _materiaRepository = materiaRepository;
             _deudaRepository = deudaRepository;
+            _notaRepository = notaRepository;
         }
-    
+
         [HttpGet]
         [Route("/estadisticasAdmin")]
         public IActionResult GetEstadisticasAdmin()
@@ -47,7 +49,8 @@ namespace backendPFPU.Controllers
             var statsDocente = new EstadisticasDocente();
             statsDocente.cantidadAlumnos = _usuarioRepository.GetAlumnosByDocente(id).Count;
             statsDocente.cantidadMaterias = _materiaRepository.GetMateriasByDocente(id).Count;
-           
+            statsDocente.porcentajeAsistenciaPromedio = _asistenciaRepository.GetPorcentajeAsistenciasByDocente(id);
+
             return Ok(statsDocente);
         }
 
@@ -59,6 +62,10 @@ namespace backendPFPU.Controllers
           
             statsAlumno.cantidadMaterias = _materiaRepository.GetCantidadMateriasByAlumno(id);
             statsAlumno.porcentajeAsistencia = _asistenciaRepository.GetPorcentajeAsistenciasByAlumno(id);
+            statsAlumno.promedioNotas = _notaRepository.GetPromedioByAlumno(id);
+            statsAlumno.cantidadDeudas = _deudaRepository.GetDeudasPendientesByAlumno(id).Count;
+            statsAlumno.cantidadMateriasAprobadas = _materiaRepository.GetCantidadMateriasAprobadasByAlumno(id);
+            statsAlumno.cantidadMateriasDesaprobadas = _materiaRepository.GetCantidadMateriasDesaprobadasByAlumno(id);
             return Ok(statsAlumno);
         }
 
@@ -67,6 +74,62 @@ namespace backendPFPU.Controllers
         public IActionResult GetGraficoAsistenciaAdmin()
         {
             return Ok(_asistenciaRepository.GetGraficoAsistenciaAdmin());
+        }
+
+        [HttpGet]
+        [Route("/graficosAdmin/deuda")]
+        public IActionResult GetGraficoDeudaAdmin()
+        {
+            return Ok(_deudaRepository.GetGraficoEstadosDePagoAdmin());
+        }
+
+        [HttpGet]
+        [Route("/actividadRecienteAdmin")]
+        public IActionResult GetActividadRecienteAdmin()
+        {
+            return Ok(_deudaRepository.GetUltimasActividades());
+        }
+
+        [HttpGet]
+        [Route("/graficoPromedioDocente/{id}")]
+        public IActionResult GetGraficoPromedioDocente(int id)
+        {
+            return Ok(_notaRepository.GetGraficoPromedioDocente(id));
+        }
+
+        [HttpGet]
+        [Route("/graficoAsistenciasAlumnoByDocente/{id}")]
+        public IActionResult GetGraficoAsistenciasAlumnoByDocente(int id)
+        {
+            return Ok(_asistenciaRepository.GetGraficoAsistenciasAlumnoByDocente(id));
+        }
+
+        [HttpGet]
+        [Route("/actividadRecienteDocente/{id}")]
+        public IActionResult GetActividadRecienteDocente(int id)
+        {
+            return Ok(_deudaRepository.GetUltimasActividadesDocente(id));
+        }
+
+        [HttpGet]
+        [Route("/graficoNotasAlumno/{id}")]
+        public IActionResult GetGraficoNotasAlumno(int id)
+        {
+            return Ok(_notaRepository.GetGraficoNotasAlumno(id));
+        }
+
+        [HttpGet]
+        [Route("/graficoAsistenciaTotalAlumno/{id}")]
+        public IActionResult GetGraficoAsistenciaTotalAlumno(int id)
+        {
+            return Ok(_asistenciaRepository.GetGraficoAsistenciaTotalALumno(id));
+        }
+
+        [HttpGet]
+        [Route("/actividadRecienteAlumno/{id}")]
+        public IActionResult GetActividadRecienteAlumno(int id)
+        {
+            return Ok(_deudaRepository.GetUltimasActividadesAlumno(id));
         }
     }
 }

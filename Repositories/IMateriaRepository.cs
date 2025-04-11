@@ -16,6 +16,11 @@ namespace backendPFPU.Repositories
 
         int GetCantidadMateriasByAlumno(int id_alumno);
 
-  
+        int GetCantidadMateriasAprobadasByAlumno(int id_alumno);
+
+        int GetCantidadMateriasDesaprobadasByAlumno(int id_alumno);
+
+
+
     }
 }

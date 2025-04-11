@@ -227,6 +227,26 @@ namespace backendPFPU.Repositories
             }
         }
 
+        public int GetPorcentajeAsistenciasByDocente(int id_docente)
+        {
+            var queryAsistencias = "SELECT COUNT(*) FROM asistencia ast JOIN materia mat ON ast.id_materia = mat.id_materia WHERE mat.id_docente = @id_docente AND (ast.estado = 'P' OR ast.estado = 'T')";
+            var queryTotal = "SELECT COUNT(*) FROM asistencia ast JOIN materia mat ON ast.id_materia = mat.id_materia WHERE mat.id_docente = @id_docente";
+            using (var connection = new SqliteConnection(_CadenaDeConexion))
+            {
+                connection.Open();
+                using (var command = new SqliteCommand(queryAsistencias, connection))
+                {
+                    command.Parameters.AddWithValue("@id_docente", id_docente);
+                    int asistencias = Convert.ToInt32(command.ExecuteScalar());
+                    command.CommandText = queryTotal;
+                    command.Parameters.Clear();
+                    command.Parameters.AddWithValue("@id_docente", id_docente);
+                    int total = Convert.ToInt32(command.ExecuteScalar());
+                    return total == 0 ? 0 : (asistencias * 100) / total;
+                }
+            }
+        }
+
         public int GetTardesByMateriaAlumno(int id_materia, int id_alumno)
         {
             var query = "SELECT COUNT(*) FROM asistencia WHERE id_materia = @id_materia AND id_alumno = @id_alumno AND estado = 'T'";
@@ -290,6 +310,83 @@ namespace backendPFPU.Repositories
             }
 
             return new GraficoAsistenciaAdmin
+            {
+                labels = labels.ToArray(),
+                data = data.ToArray()
+            };
+        }
+
+        // Método para obtener el gráfico de asistencias de las materias que dicta un docente, se realiza una cuenta de los presentes, ausentes y tarde de todas las materias dictadas por el id_docente
+        public GraficoAsistenciasAlumnoByDocente GetGraficoAsistenciasAlumnoByDocente(int id_docente)
+        {
+            var query = @"
+            SELECT 
+                ast.estado AS label,
+                COUNT(*) AS cantidad
+            FROM
+                asistencia ast
+            JOIN
+                materia mat ON ast.id_materia = mat.id_materia
+            WHERE
+                mat.id_docente = @id_docente
+            GROUP BY
+                ast.estado";
+            var labels = new List<string>();
+            var data = new List<int>();
+            using (var connection = new SqliteConnection(_CadenaDeConexion))
+            {
+                connection.Open();
+                using (var command = new SqliteCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@id_docente", id_docente);
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            labels.Add(reader.GetString(0));  // Columna "label"
+                            data.Add(reader.GetInt32(1)); // Convertir double a float
+                        }
+                    }
+                }
+            }
+            return new GraficoAsistenciasAlumnoByDocente
+            {
+                labels = labels.ToArray(),
+                data = data.ToArray()
+            };
+        }
+
+        public GraficoAsistenciaTotalALumno GetGraficoAsistenciaTotalALumno(int id_alumno)
+        {
+            var query = @"
+            SELECT 
+                ast.estado AS label,
+                COUNT(*) AS cantidad
+            FROM
+                asistencia ast
+            WHERE
+                ast.id_alumno = @id_alumno
+            GROUP BY
+                ast.estado";
+            var labels = new List<string>();
+            var data = new List<int>();
+            using (var connection = new SqliteConnection(_CadenaDeConexion))
+            {
+                connection.Open();
+                using (var command = new SqliteCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@id_alumno", id_alumno);
+                    using (var reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            labels.Add(reader.GetString(0));  // Columna "label"
+                            data.Add(reader.GetInt32(1)); // Convertir double a float
+                        }
+                    }
+                }
+            }
+            return new GraficoAsistenciaTotalALumno
             {
                 labels = labels.ToArray(),
                 data = data.ToArray()

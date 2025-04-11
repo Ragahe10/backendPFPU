@@ -5,5 +5,7 @@
         public int cantidadMaterias { get; set; }
      
         public int cantidadAlumnos { get; set; }
+
+        public int porcentajeAsistenciaPromedio { get; set; }
     }
 }

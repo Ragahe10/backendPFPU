@@ -12,6 +12,12 @@ namespace backendPFPU.Repositories
 
         GraficoAsistenciaAdmin GetGraficoAsistenciaAdmin();
 
+        GraficoAsistenciasAlumnoByDocente GetGraficoAsistenciasAlumnoByDocente(int id_docente);
+
+        GraficoAsistenciaTotalALumno GetGraficoAsistenciaTotalALumno(int id_alumno);
+
+        int GetPorcentajeAsistenciasByDocente(int id_docente); //Trae el promedio de asistencias de los alumnos de un docente
+
         int GetPorcentajeAsistenciasGlobal();
 
         int GetPorcentajeAsistenciasByAlumno(int id_alumno);
